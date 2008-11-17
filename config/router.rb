@@ -27,6 +27,7 @@
 
 Merb.logger.info("Compiling routes...")
 Merb::Router.prepare do
+  resources :servers
   resources :guys
   resources :messages
   resources :channels

@@ -14,8 +14,8 @@ Merb.load_dependencies(:environment => init_env)
 # Get Merb plugins and dependencies
 Merb::Plugins.rakefiles.each { |r| require r } 
 
-# Load any app level custom rakefile extensions from lib/tasks
-tasks_path = File.join(File.dirname(__FILE__), "lib", "tasks")
+# Load any app level custom rakefile extensions from tasks
+tasks_path = File.join(File.dirname(__FILE__), "tasks")
 rake_files = Dir["#{tasks_path}/*.rake"]
 rake_files.each{|rake_file| load rake_file }
 
