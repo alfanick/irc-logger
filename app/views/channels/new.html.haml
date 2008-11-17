@@ -1,0 +1,13 @@
+%h1 Channels controller, new action
+
+%p 
+  Edit this file in 
+  %tt app/views/channels/new.html.erb
+
+= error_messages_for :channel
+
+= form_for(@channel, :action => url(:channels) ) do
+  %p
+    = submit "Create"
+
+= link_to 'Back', url(:channels)

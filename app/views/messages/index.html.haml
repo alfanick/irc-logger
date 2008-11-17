@@ -1,0 +1,16 @@
+%h1
+  Messages controller, index action
+%p
+  Edit this file in
+  %tt
+    app/views/messages/index.html.erb
+%table
+  %tr
+  - for message in @messages
+    %tr
+      %td
+        = link_to 'Show', url(:message, message)
+      %td
+        = link_to 'Edit', url(:edit_message,  message)
+
+= link_to 'New', url(:new_message)

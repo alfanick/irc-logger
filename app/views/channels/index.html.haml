@@ -1,0 +1,16 @@
+%h1
+  Channels controller, index action
+%p
+  Edit this file in
+  %tt
+    app/views/channels/index.html.erb
+%table
+  %tr
+  - for channel in @channels
+    %tr
+      %td
+        = link_to 'Show', url(:channel, channel)
+      %td
+        = link_to 'Edit', url(:edit_channel,  channel)
+
+= link_to 'New', url(:new_channel)
