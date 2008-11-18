@@ -3,9 +3,8 @@ class Guy
   
   property :id, Serial
   
-  property :nickname, String, :nullable => false
-  property :created_at, DateTime,
-    :default => Proc.new { Time.now }
+  property :nickname, String, :nullable => false, :length => (1..60)
+  property :created_at, DateTime
 
   has n, :messages
 end

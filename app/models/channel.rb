@@ -3,9 +3,9 @@ class Channel
   
   property :id, Serial
 
-  property :name, String, :nullable => false
-  property :created_at, DateTime,
-    :default => Proc.new { Time.now }
+  property :name, String, :nullable => false, :format => /^#\w+/
+  property :created_at, DateTime
+  property :status, Enum[:enabled, :inactive, :disabled], :default => :disabled
   
   belongs_to :server
 end

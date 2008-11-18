@@ -4,8 +4,7 @@ class Message
   property :id, Serial
 
   property :content, Text, :nullable => false, :lazy => false
-  property :created_at, DateTime,
-    :default => Proc.new { Time.now }
+  property :created_at, DateTime
 
   belongs_to :guy
 end
