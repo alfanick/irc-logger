@@ -7,4 +7,5 @@ class Message
   property :created_at, DateTime
 
   belongs_to :guy
+  belongs_to :channel
 end

@@ -8,4 +8,5 @@ class Channel
   property :status, Enum[:enabled, :inactive, :disabled], :default => :inactive
   
   belongs_to :server
+  has n, :messages
 end

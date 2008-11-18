@@ -78,7 +78,7 @@ namespace :irc do
   desc 'Listen for messages'
   task :listen => [:merb_env] do
     require 'the_logger'
-    TheLogger.start_listening()
+    TheLogger.fork_loggers
     
     Merb.logger.info "Listening for messages..."
   end
