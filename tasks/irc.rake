@@ -20,8 +20,7 @@ namespace :irc do
     server, channel = parse_channel_and_server(a.url)
 
     # get a server or create new
-    sv = Server.first(:host => server) \
-          || Server.new(:host => server)
+    sv = Server.first_or_create(:host => server)
     # enable the server and save it
     sv.status = :enabled
     sv.save or raise 'Check the url!'

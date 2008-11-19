@@ -4,6 +4,7 @@ class Message
   property :id, Serial
 
   property :content, Text, :nullable => false, :lazy => false
+  property :notice, Boolean, :default => false
   property :created_at, DateTime
 
   belongs_to :guy
