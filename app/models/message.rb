@@ -4,7 +4,7 @@ class Message
   property :id, Serial
 
   property :content, Text, :nullable => false, :lazy => false
-  property :notice, Boolean, :default => false
+  property :event, Enum[:message, :join, :mode, :part, :kick], :default => :message
   property :created_at, DateTime
 
   belongs_to :guy

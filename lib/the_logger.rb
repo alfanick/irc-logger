@@ -60,8 +60,8 @@ class TheLogger < IRCBot
   end
   
   private
-    def add_notice(channel, user, text)
-      return if channel =~ /^#{bot_name}/
+    def add_notice(channel, user, text, event)
+      return if (channel =~ /^#{bot_name}/ or user == bot_name)
       
       guy = Guy.first_or_create(:nickname => user)
       guy.save
@@ -69,7 +69,7 @@ class TheLogger < IRCBot
       ch = @server.channels.first_or_create(:name => channel, :status => :enabled)
       ch.save!
       
-      msg = Message.new(:content => "*** #{text}", :channel => ch, :guy => guy, :notice => true)
+      msg = Message.new(:content => "*** #{text}", :channel => ch, :guy => guy, :event => event)
       msg.save
     end
   
@@ -81,6 +81,8 @@ class TheLogger < IRCBot
       
       ch = @server.channels.first(:name => channel, :status => :enabled)
       
+      return if not ch
+      
       msg = Message.new(:content => text, :channel => ch, :guy => guy)
       msg.save
     end
@@ -89,21 +91,21 @@ class TheLogger < IRCBot
       if object == bot_name
         join(target) 
       else
-        add_notice(target, actor, "#{actor} kicked #{object} (#{text})")
+        add_notice(target, actor, "#{actor} kicked #{object} (#{text})", :kick)
       end
 
       return true
     end
     
     def r_mode(fullactor, actor, target, modes, objects)
-      add_notice(target, actor, "#{actor} sets mode #{modes} #{objects}")
+      add_notice(target, actor, "#{actor} sets mode #{modes} #{objects}", :mode)
     end
 
     def r_join(fullactor, actor, target)
-      add_notice(target, actor, "#{actor} joins")
+      add_notice(target, actor, "#{actor} joins", :join)
     end
 
     def r_part(fullactor, actor, target, text)
-      add_notice(target, actor, "#{actor} parts (#{text})")
-    end 
+      add_notice(target, actor, "#{actor} parts (#{text})", :part)
+    end
 end
