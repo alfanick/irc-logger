@@ -60,10 +60,25 @@ class TheLogger < IRCBot
   end
   
   private
+    # Repairs the channel name (remove hashes)
+    #
+    # *Arguments*:
+    # - +channel+ - String - channel name
+    #
+    # *Return* - String
     def repair_channel(channel)
       channel.gsub /^#+/, '#'
     end
   
+    # Add message to database
+    #
+    # *Arguments*
+    # - +channel+ - String - channel name
+    # - +user+ - String - nickname
+    # - +text+ - String - text
+    # - +event+ - Symbol - message type (:message, :kick, :mode, :join, :part)
+    #
+    # *Return* - Boolean - success?
     def add_notice(channel, user, text, event)
       return if (channel =~ /^#{bot_name}/ or user == bot_name)
       channel = repair_channel(channel)
@@ -74,23 +89,12 @@ class TheLogger < IRCBot
       ch = @server.channels.first_or_create(:name => channel, :status => :enabled)
       ch.save!
       
-      msg = Message.new(:content => "*** #{text}", :channel => ch, :guy => guy, :event => event)
+      msg = Message.new(:content => text, :channel => ch, :guy => guy, :event => event)
       msg.save
     end
   
     def _in_msg(fullactor, user, channel, text)
-      return if channel =~ /^#{bot_name}/
-      channel = repair_channel(channel)
-      
-      guy = Guy.first_or_create(:nickname => user)
-      guy.save
-      
-      ch = @server.channels.first(:name => channel, :status => :enabled)
-      
-      return if not ch
-      
-      msg = Message.new(:content => text, :channel => ch, :guy => guy)
-      msg.save
+      add_notice(channel, user, text, :message)
     end
     
     def _in_kick(fullactor, actor, target, object, text)
