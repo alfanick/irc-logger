@@ -60,8 +60,13 @@ class TheLogger < IRCBot
   end
   
   private
+    def repair_channel(channel)
+      channel.gsub /^#+/, '#'
+    end
+  
     def add_notice(channel, user, text, event)
       return if (channel =~ /^#{bot_name}/ or user == bot_name)
+      channel = repair_channel(channel)
       
       guy = Guy.first_or_create(:nickname => user)
       guy.save
@@ -75,6 +80,7 @@ class TheLogger < IRCBot
   
     def _in_msg(fullactor, user, channel, text)
       return if channel =~ /^#{bot_name}/
+      channel = repair_channel(channel)
       
       guy = Guy.first_or_create(:nickname => user)
       guy.save
