@@ -6,7 +6,14 @@ ul.menu, ol.menu {
     width: 100%; }
     ul.menu.horizontal li,     ol.menu.horizontal li {
       margin-right: 1em;
+      display: block;
       float: left; }
+      ul.menu.horizontal li a,       ol.menu.horizontal li a {
+        display: block; }
+
+p.incredible {
+  font-size: 2em;
+  text-align: center; }
 
 body {
   margin: 0;
@@ -15,4 +22,32 @@ body {
 #main {
   width: 600px;
   margin: 0 auto;
-  margin-top: 100px; }
+  margin-top: 100px;
+  margin-bottom: 100px; }
+  #main #header {
+    height: 1.6em;
+    font-size: 5em; }
+    #main #header h1 {
+      padding-top: 0.5em;
+      padding-right: 0.3em;
+      text-align: right;
+      text-transform: lowercase;
+      font-size: 1em; }
+  #main #content form#search {
+    padding: 0.5em;
+    padding-top: 1em; }
+    #main #content form#search input {
+      font-size: 2em;
+      margin-left: 0.1em;
+      border: none; }
+      #main #content form#search input.submit {
+        text-transform: lowercase; }
+      #main #content form#search input.query {
+        padding-left: 0.1em;
+        padding-right: 0.1em; }
+  #main #footer ul.menu {
+    font-family: "Liberation Mono", "Dejavu Sans Mono", "Monaco", "Consolas", "Courier New", monospace;
+    text-transform: uppercase;
+    font-size: 0.7em; }
+    #main #footer ul.menu li {
+      padding: 1em; }

@@ -1,0 +1,18 @@
+#main #header {
+  background-color: #0eba00; }
+  #main #header h1 {
+    color: #ffffff; }
+#main #content form#search {
+  background-color: #11eb00;
+  color: #000000; }
+  #main #content form#search input.submit {
+    background-color: #0eba00;
+    color: #ffffff; }
+#main #footer ul.menu li a {
+  color: #000000; }
+#main #footer ul.menu li.current {
+  background-color: #0eba00; }
+  #main #footer ul.menu li.current a {
+    color: #ffffff; }
+#main #footer ul.menu li:hover {
+  background-color: #17d706; }

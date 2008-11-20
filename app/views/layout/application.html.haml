@@ -4,7 +4,7 @@
   %head
     %title IRC logger
     %meta{ 'http-equiv' => 'Content-Type', :content => 'application/xhtml+xml; charset=utf-8'}
-    - require_css 'main'
+    - require_css 'main', 'styles/green'
     
     = include_required_css
     = include_required_js
@@ -12,16 +12,20 @@
     #main
       #header
         %h1 IRC logger
-  
-        - if message[:notice]
-          .notice= message[:notice]
     
       #content
+        %form#search
+          %input.query{:type=>'text'}
+          %input.submit{:type=>'submit', :value=>'Search'}
+      
+        - if message[:notice]
+          .notice= message[:notice]
+        
         = catch_content :for_layout
 
       #footer
         %ul.menu.horizontal
-          %li= link_to 'About'
           %li= link_to 'Add channel'
+          %li.current= link_to 'About'
           %li= link_to 'Donate'
           %li= link_to 'Source code'

@@ -1,0 +1,39 @@
+!link_fg = #000000
+!link_hv = #17d706
+
+!highlight_bg = #0eba00
+!highlight_fg = #ffffff
+
+!search_bg = #11eb00
+!search_fg = #000000
+
+#main
+  #header
+    :background-color = !highlight_bg
+    
+    h1
+      :color = !highlight_fg
+  
+  #content
+    form#search
+      :background-color = !search_bg
+      :color = !search_fg
+      
+      input.submit
+        :background-color = !highlight_bg
+        :color = !highlight_fg
+  
+  #footer
+    ul.menu
+      li
+        a
+          :color = !link_fg
+
+        &.current
+          :background-color = !highlight_bg
+          
+          a
+            :color = !highlight_fg
+        
+        &:hover
+          :background-color = !link_hv

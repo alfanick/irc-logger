@@ -6,4 +6,7 @@ ul.menu, ol.menu {
     width: 100%; }
     ul.menu.horizontal li,     ol.menu.horizontal li {
       margin-right: 1em;
+      display: block;
       float: left; }
+      ul.menu.horizontal li a,       ol.menu.horizontal li a {
+        display: block; }

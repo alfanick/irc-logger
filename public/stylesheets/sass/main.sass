@@ -10,3 +10,45 @@ body
   
   :margin 0 auto
   :margin-top 100px
+  :margin-bottom 100px
+  
+  #header
+    :height 1.6em
+
+    :font-size 5em
+  
+  
+    h1
+      :padding-top 0.5em
+      :padding-right 0.3em
+    
+      :text-align right
+      :text-transform lowercase
+      :font-size 1em
+  
+  #content
+    form#search
+      :padding 0.5em
+      :padding-top 1em
+      
+      input
+        +large_text
+        
+        :margin-left 0.1em
+        
+        :border none
+        
+        &.submit
+          :text-transform lowercase
+        
+        &.query
+          :padding-left 0.1em
+          :padding-right 0.1em
+        
+  
+  #footer
+    ul.menu
+      +thin_text
+      
+      li
+        :padding 1em
