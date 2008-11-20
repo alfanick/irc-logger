@@ -1,0 +1,9 @@
+ul.menu, ol.menu {
+  margin: 0;
+  padding: 0;
+  list-style: none; }
+  ul.menu.horizontal,   ol.menu.horizontal {
+    width: 100%; }
+    ul.menu.horizontal li,     ol.menu.horizontal li {
+      margin-right: 1em;
+      float: left; }
