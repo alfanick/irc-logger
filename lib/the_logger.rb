@@ -35,11 +35,11 @@ class TheLogger < IRCBot
   
   # Prepare events for listening
   def add_custom_handlers
-    @irc.prepend_handler :incoming_msg,             self.method(:_in_msg)
-    @irc.prepend_handler :incoming_kick,            self.method(:_in_kick)
-    @irc.prepend_handler :incoming_mode,            self.method(:r_mode)
-    @irc.prepend_handler :incoming_join,            self.method(:r_join)
-    @irc.prepend_handler :incoming_part,            self.method(:r_part)
+    @irc.prepend_handler :incoming_msg, self.method(:_in_msg)
+    @irc.prepend_handler :incoming_kick, self.method(:_in_kick)
+    @irc.prepend_handler :incoming_mode, self.method(:r_mode)
+    @irc.prepend_handler :incoming_join, self.method(:r_join)
+    @irc.prepend_handler :incoming_part, self.method(:r_part)
   end
 
   # Start listen. Each server has own thread.
@@ -50,7 +50,8 @@ class TheLogger < IRCBot
     
     Server.all(:status => :enabled).each do |sv|
       logging_threads << Thread.new(sv) do |s|
-        TheLogger.new(s) 
+        Thread.current[:logger] = TheLogger.new(s)
+        Thread.current[:server] = s
       end
     end
     
