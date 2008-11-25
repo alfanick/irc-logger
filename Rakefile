@@ -29,6 +29,12 @@ require 'merb-core/test/tasks/spectasks'
 desc 'Default: run spec examples'
 task :default => 'spec'
 
+namespace :app do
+  task :restart do
+    sh 'touch tmp/restart.txt'
+  end
+end
+
 ##############################################################################
 # ADD YOUR CUSTOM TASKS IN /lib/tasks
 # NAME YOUR RAKE FILES file_name.rake
