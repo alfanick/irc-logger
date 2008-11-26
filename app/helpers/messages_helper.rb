@@ -11,10 +11,12 @@ module Merb
     def talk_with (message, n=5)
       str = '<ol class="irc talk">'
       message.with_surroundings(n).each do |msg|
+        c = msg.class.name
+        cid = c + "_#{msg.id}"
         if msg == message
-          str << '<li class="result"><strong>' << format_message(msg) << '</strong></li>'
+          str << "<li class=\"result #{c}\" id=\"#{cid}\"><strong>" << format_message(msg) << '</strong></li>'
         else
-          str << "<li>" << format_message(msg) << "</li>"
+          str << "<li class=\"#{c}\" id=\"#{cid}\">" << format_message(msg) << "</li>"
         end
       end
       str << '</ol>'
