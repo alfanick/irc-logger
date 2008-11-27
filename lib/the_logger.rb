@@ -94,7 +94,7 @@ class TheLogger < IRCBot
         msg = Message.new(:content => text, :channel => ch, :guy => guy, :event => event)
         msg.save
       rescue Exception
-        Merb::Logger.error($!)
+        Merb.logger.error($!)
       end
     end
   
