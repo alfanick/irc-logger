@@ -84,14 +84,18 @@ class TheLogger < IRCBot
       return if (channel =~ /^#{bot_name}/ or user == bot_name)
       channel = repair_channel(channel)
       
-      guy = Guy.first_or_create(:nickname => user)
-      guy.save
-    
-      ch = @server.channels.first_or_create(:name => channel, :status => :enabled)
-      ch.save!
+      begin
+        guy = Guy.first_or_create(:nickname => user)
+        guy.save
       
-      msg = Message.new(:content => text, :channel => ch, :guy => guy, :event => event)
-      msg.save
+        ch = @server.channels.first_or_create(:name => channel, :status => :enabled)
+        ch.save!
+      
+        msg = Message.new(:content => text, :channel => ch, :guy => guy, :event => event)
+        msg.save
+      rescue Exception
+        Merb::Logger.error($!)
+      end
     end
   
     def _in_msg(fullactor, user, channel, text)
