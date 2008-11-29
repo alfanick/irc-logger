@@ -10,6 +10,8 @@ class Message
   belongs_to :guy
   belongs_to :channel
   
+  is :searchable
+  
   def related(n)
     if n > 0
       channel.messages.all(:limit => n, :created_at.gt => created_at)
