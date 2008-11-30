@@ -1,12 +1,20 @@
 namespace :sphinx do
   desc 'Create main messages index (slowly)'
   task :main do
-    sh 'indexer --config config/sphinx.conf messages'
+    begin
+      sh 'indexer --config config/sphinx.conf messages'
+    rescue Exception
+      sh 'indexer --config config/sphinx.conf messages --rotate'    
+    end
   end
   
   desc 'Create delta messages index (fast - only new messages are indexed)'
   task :delta do
-    sh 'indexer --config config/sphinx.conf delta'
+    begin
+      sh 'indexer --config config/sphinx.conf delta'
+    rescue Exception
+      sh 'indexer --config config/sphinx.conf delta --rotate'    
+    end
   end
   
   desc 'Merge delta and main indexes'

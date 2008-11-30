@@ -14,8 +14,8 @@
         %h1 IRC logger
     
       #content
-        %form#search
-          %input.query{:type=>'text'}
+        %form#search{:action => '/messages'}
+          %input.query{:type=>'text', :name=>'query'}
           %input.submit{:type=>'submit', :value=>'Search'}
       
         - if message[:notice]

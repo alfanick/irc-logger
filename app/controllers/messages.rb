@@ -1,8 +1,12 @@
 class Messages < Application
-  # provides :xml, :yaml, :js
+  provides :xml, :yaml, :js
 
   def index
-    @messages = Message.all
+    if not params['query'].empty?
+      @messages = Message.search(:conditions => [params['query']])
+    else
+      @messages = Message.all
+    end
     display @messages
   end
 
