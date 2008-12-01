@@ -3,7 +3,7 @@ class Messages < Application
 
   def index
     if params.include? 'query' and not params['query'].empty?
-      @messages = Message.search(:conditions => ['-event 3|4|5', params['query']], :limit => 10).reverse
+      @messages = Message.search(:conditions => [params['query']], :limit => 10)
     else
       @messages = Message.all(:limit => 20).reverse
     end

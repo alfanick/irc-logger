@@ -1,3 +1,7 @@
+p.incredible {
+  font-size: 2em;
+  text-align: center; }
+
 ul.menu, ol.menu {
   margin: 0;
   padding: 0;
@@ -11,9 +15,19 @@ ul.menu, ol.menu {
       ul.menu.horizontal li a,       ol.menu.horizontal li a {
         display: block; }
 
-p.incredible {
-  font-size: 2em;
-  text-align: center; }
+#results.irc {
+  font-family: "Lucida Sans Unicode", "DejaVu Sans", "Verdana", sans-serif; }
+  #results.irc .irc.talk ol {
+    padding: 0;
+    margin: 0;
+    list-style: none; }
+    #results.irc .irc.talk ol li {
+      margin-left: 1em; }
+      #results.irc .irc.talk ol li code {
+        font-family: "Liberation Mono", "Dejavu Sans Mono", "Monaco", "Consolas", "Courier New", monospace;
+        font-size: 0.9em; }
+        #results.irc .irc.talk ol li code.notice {
+          font-size: 0.8em; }
 
 body {
   margin: 0;

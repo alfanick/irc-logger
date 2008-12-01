@@ -9,8 +9,12 @@ module Merb
     end
   
     def talk_with (message, n=5)
-      str = '<ol class="irc talk">'
-      message.with_surroundings(n).each do |msg|
+      str = '<div class="irc talk">'
+      str << "<h2>#{message.channel.name}</h2> <em class=\"server\">#{message.channel.server.name}</em> "
+      ms = message.with_surroundings(n)
+      str << "<strong>#{ms.first.created_at}</strong>"
+      str << '<ol>'
+      ms.each do |msg|
         c = msg.class.name
         cid = c + "_#{msg.id}"
         if msg == message
@@ -20,6 +24,8 @@ module Merb
         end
       end
       str << '</ol>'
+      str << "<strong>#{ms.last.created_at}</strong>"
+      str << '</div>'
       
       str
     end
