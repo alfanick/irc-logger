@@ -1,0 +1,51 @@
+/*
+Sass::SyntaxError: Undefined mixin 'sans'.
+on line 2 of /home/alfanick/Projekty/irc-logger/public/stylesheets/sass/components/irc.sass
+
+1: #results.irc
+2:   +sans
+3: 
+4:   .irc.talk
+5:   
+6:     ol
+7:       :padding 0
+8:       :margin 0
+
+
+Backtrace:
+/home/alfanick/Projekty/irc-logger/public/stylesheets/sass/components/irc.sass:2
+/usr/lib/ruby/gems/1.8/gems/haml-2.0.5/lib/sass/engine.rb:389:in `parse_mixin_include'
+/usr/lib/ruby/gems/1.8/gems/haml-2.0.5/lib/sass/engine.rb:302:in `parse_line'
+/usr/lib/ruby/gems/1.8/gems/haml-2.0.5/lib/sass/engine.rb:187:in `build_tree'
+/usr/lib/ruby/gems/1.8/gems/haml-2.0.5/lib/sass/engine.rb:237:in `build_tree'
+/usr/lib/ruby/gems/1.8/gems/haml-2.0.5/lib/sass/engine.rb:116:in `render_to_tree'
+/usr/lib/ruby/gems/1.8/gems/haml-2.0.5/lib/sass/engine.rb:88:in `render'
+/usr/lib/ruby/gems/1.8/gems/haml-2.0.5/lib/sass/plugin.rb:65:in `update_stylesheets'
+/usr/lib/ruby/gems/1.8/gems/haml-2.0.5/lib/sass/plugin.rb:53:in `each'
+/usr/lib/ruby/gems/1.8/gems/haml-2.0.5/lib/sass/plugin.rb:53:in `update_stylesheets'
+/usr/lib/ruby/gems/1.8/gems/merb-haml-1.0.3/lib/merb-haml/merbtasks.rb:8
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.3/lib/rake.rb:617:in `call'
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.3/lib/rake.rb:617:in `execute'
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.3/lib/rake.rb:612:in `each'
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.3/lib/rake.rb:612:in `execute'
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.3/lib/rake.rb:578:in `invoke_with_call_chain'
+/usr/lib/ruby/1.8/monitor.rb:242:in `synchronize'
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.3/lib/rake.rb:571:in `invoke_with_call_chain'
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.3/lib/rake.rb:564:in `invoke'
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.3/lib/rake.rb:2019:in `invoke_task'
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.3/lib/rake.rb:1997:in `top_level'
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.3/lib/rake.rb:1997:in `each'
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.3/lib/rake.rb:1997:in `top_level'
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.3/lib/rake.rb:2036:in `standard_exception_handling'
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.3/lib/rake.rb:1991:in `top_level'
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.3/lib/rake.rb:1970:in `run'
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.3/lib/rake.rb:2036:in `standard_exception_handling'
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.3/lib/rake.rb:1967:in `run'
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.3/bin/rake:31
+/usr/bin/rake:19:in `load'
+/usr/bin/rake:19
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Sass::SyntaxError: Undefined mixin 'sans'.\A on line 2 of /home/alfanick/Projekty/irc-logger/public/stylesheets/sass/components/irc.sass\A \A 1: #results.irc\A 2:   +sans\A 3: \A 4:   .irc.talk\A 5:   \A 6:     ol\A 7:       :padding 0\A 8:       :margin 0\A "; }
