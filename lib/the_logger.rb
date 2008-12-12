@@ -98,10 +98,12 @@ class TheLogger < IRCBot
       end
     end
   
+    # Log channel message
     def _in_msg(fullactor, user, channel, text)
       add_notice(channel, user, text, :message)
     end
     
+    # Log kick event (and rejoin if bot is kicked)
     def _in_kick(fullactor, actor, target, object, text)
       if object == bot_name
         join(target) 
@@ -112,14 +114,17 @@ class TheLogger < IRCBot
       return true
     end
     
+    # Log mode event
     def r_mode(fullactor, actor, target, modes, objects)
       add_notice(target, actor, "#{actor} sets mode #{modes} #{objects}", :mode)
     end
 
+    # Log join event
     def r_join(fullactor, actor, target)
       add_notice(target, actor, "#{actor} joins", :join)
     end
 
+    # Log part event
     def r_part(fullactor, actor, target, text)
       add_notice(target, actor, "#{actor} parts (#{text})", :part)
     end

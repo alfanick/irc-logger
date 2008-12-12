@@ -12,7 +12,7 @@ module Merb
       str = '<div class="irc talk">'
       str << "<h2>#{message.channel.name}</h2> <em class=\"server\">#{message.channel.server.name}</em> "
       ms = message.with_surroundings(n)
-      str << "<strong>#{ms.first.created_at}</strong>"
+      str << "<em class=\"date\">#{ms.first.created_at}</em>"
       str << '<ol>'
       ms.each do |msg|
         c = msg.class.name
@@ -24,7 +24,7 @@ module Merb
         end
       end
       str << '</ol>'
-      str << "<strong>#{ms.last.created_at}</strong>"
+      str << "<em class=\"date\">#{ms.last.created_at}</em>"
       str << '</div>'
       
       str
