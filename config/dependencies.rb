@@ -1,6 +1,6 @@
 # dependencies are generated using a strict version, don't forget to edit the dependency versions when upgrading.
-merb_gems_version = "1.0.1"
-dm_gems_version   = "0.9.7"
+merb_gems_version = "1.0.4"
+dm_gems_version   = "0.9.8"
 
 # For more information about each component, please read http://wiki.merbivore.com/faqs/merb_components
 dependency "merb-action-args", merb_gems_version
@@ -22,8 +22,8 @@ dependency "dm-timestamps", dm_gems_version
 dependency "dm-types", dm_gems_version        
 dependency "dm-validations", dm_gems_version  
 dependency "dm-is-searchable"
-gem "shanna-dm-sphinx-adapter"
-dependency "dm-sphinx-adapter"
+#gem "shanna-dm-sphinx-adapter"
+require "dm-sphinx-adapter"
 
 dependency "haml"
 
