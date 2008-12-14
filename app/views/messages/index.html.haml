@@ -3,9 +3,12 @@
     - for message in @messages
       = talk_with(message, 3)
   - else
-    %p.result.error= "Sorry, but the phrase <em>%s</em> was not found." % h(params[:query])
+    - if params.include? :page
+      %p.result.error= "No more search results... Back to %s." % link_to('previous page', url(:search, :query => params[:query], :page => params[:page].to_i-1))
+    - else
+      %p.result.error= "Sorry, but the phrase <em>%s</em> was not found." % h(params[:query])
 - if not @messages.empty?
   #pagination
     - if params[:page].to_i > 1
-      = link_to 'Previous page', url(:search, :query =>params[:query], :page => params[:page].to_i-1), :class=>'previous'
-    = link_to 'Next page', url(:search, :query =>params[:query], :page => params[:page].to_i+1), :class=>'next'
+      = link_to 'Previous page', url(:search, :query => params[:query], :page => params[:page].to_i-1), :class => 'previous'
+    = link_to 'Next page', url(:search, :query => params[:query], :page => params[:page].to_i+1), :class => 'next'
