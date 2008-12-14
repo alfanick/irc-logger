@@ -19,7 +19,7 @@
           %input.submit{:type=>'submit', :value=>'Search'}
       
         - if message[:notice]
-          .notice= message[:notice]
+          %p.notice= message[:notice]
         
         = catch_content :for_layout
 

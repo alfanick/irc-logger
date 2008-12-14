@@ -2,7 +2,9 @@ module Merb
   module MessagesHelper
     def format_message (message)
       if message.event == :message
-        '<code class="irc message">' + h("<#{message.guy.nickname}> #{message.content}") + '</code>'
+        c = h("<#{message.guy.nickname}> #{message.content}")
+        c.sub! /((http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?)/ix, '<a class="external" href="\1">\1</a>'
+        '<code class="irc message">' + c + '</code>'
       else
         '<code class="irc notice">' + h("*** #{message.content}") + '</code>'
       end
