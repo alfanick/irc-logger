@@ -12,15 +12,23 @@ class Message
   
   is :searchable
   
-  def related(n)
-    if n > 0
-      channel.messages.all(:limit => n, :created_at.gt => created_at)
+  def related(n, events=true)
+    if events
+      if n > 0
+        channel.messages.all(:limit => n, :created_at.gt => created_at)
+      else
+        channel.messages.all(:limit => n.abs, :order => [:created_at.desc], :created_at.lt => created_at).reverse
+      end
     else
-      channel.messages.all(:limit => n.abs, :order => [:created_at.desc], :created_at.lt => created_at).reverse
+      if n > 0
+        channel.messages.all(:limit => n, :created_at.gt => created_at, :event => :message)
+      else
+        channel.messages.all(:limit => n.abs, :order => [:created_at.desc], :created_at.lt => created_at, :event => :message).reverse
+      end
     end
   end
   
-  def with_surroundings(n=5)
-    related(-n) + [self] + related(n)
+  def with_surroundings(n=5, events=true)
+    related(-n, events) + [self] + related(n, events)
   end
 end

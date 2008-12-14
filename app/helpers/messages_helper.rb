@@ -2,8 +2,10 @@ module Merb
   module MessagesHelper
     def format_message (message)
       if message.event == :message
+        # HTML encode
         c = h("<#{message.guy.nickname}> #{message.content}")
-        c.sub! /((http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?)/ix, '<a class="external" href="\1">\1</a>'
+        # Create links
+        c.sub! /((http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/[^\n ]*)?)/ix, '<a class="external" href="\1">\1</a>'
         '<code class="irc message">' + c + '</code>'
       else
         '<code class="irc notice">' + h("*** #{message.content}") + '</code>'
@@ -13,7 +15,7 @@ module Merb
     def talk_with (message, n=5)
       str = '<div class="irc talk">'
       str << "<h2>#{message.channel.name}</h2> <em class=\"server\">#{message.channel.server.name}</em> "
-      ms = message.with_surroundings(n)
+      ms = message.with_surroundings(n, false)
       str << "<em class=\"date\">#{ms.first.created_at}</em>"
       str << '<ol>'
       ms.each do |msg|
