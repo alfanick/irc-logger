@@ -34,6 +34,7 @@ body
     form#search
       :padding 0.5em
       :padding-top 1em
+      :height 3.5em
       
       input
         +large_text
@@ -44,10 +45,14 @@ body
         
         &.submit
           :text-transform lowercase
+          :width 25%
+          :float right
         
         &.query
           :padding-left 0.1em
           :padding-right 0.1em
+          :width 70%
+          :float left
     
     #pagination
       :margin

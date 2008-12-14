@@ -27,6 +27,7 @@ ul.menu, ol.menu {
     #results.irc .irc.talk ol {
       padding: 0;
       margin: 0;
+      margin-left: 1em;
       list-style: none; }
       #results.irc .irc.talk ol li code {
         font-family: "Liberation Mono", "Dejavu Sans Mono", "Monaco", "Consolas", "Courier New", monospace;
@@ -57,16 +58,21 @@ body {
         font-size: 1em; }
   #main #content form#search {
     padding: 0.5em;
-    padding-top: 1em; }
+    padding-top: 1em;
+    height: 3.5em; }
     #main #content form#search input {
       font-size: 2em;
       margin-left: 0.1em;
       border: none; }
       #main #content form#search input.submit {
-        text-transform: lowercase; }
+        text-transform: lowercase;
+        width: 25%;
+        float: right; }
       #main #content form#search input.query {
         padding-left: 0.1em;
-        padding-right: 0.1em; }
+        padding-right: 0.1em;
+        width: 70%;
+        float: left; }
   #main #content #pagination {
     margin-top: 1em;
     margin-bottom: 1em;

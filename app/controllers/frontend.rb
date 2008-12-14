@@ -6,4 +6,8 @@ class Frontend < Application
     render
   end
   
+  def about
+    render
+  end
+  
 end
