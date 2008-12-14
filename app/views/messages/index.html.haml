@@ -3,4 +3,4 @@
     - for message in @messages
       = talk_with(message, 3)
   - else
-    %p.result.error Sorry, but the phrase was not found.
+    %p.result.error= "Sorry, but the phrase <em>%s</em> was not found." % h(params[:query])
