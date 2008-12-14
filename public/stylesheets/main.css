@@ -41,12 +41,15 @@ body {
   #main #header {
     height: 1.6em;
     font-size: 5em; }
-    #main #header h1 {
-      padding-top: 0.5em;
-      padding-right: 0.3em;
-      text-align: right;
-      text-transform: lowercase;
-      font-size: 1em; }
+    #main #header a {
+      text-decoration: none;
+      outline: none; }
+      #main #header a h1 {
+        padding-top: 0.5em;
+        padding-right: 0.3em;
+        text-align: right;
+        text-transform: lowercase;
+        font-size: 1em; }
   #main #content form#search {
     padding: 0.5em;
     padding-top: 1em; }

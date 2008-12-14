@@ -5,7 +5,7 @@ class Messages < Application
     if params.include? 'query' and not params['query'].empty?
       @messages = Message.search(:conditions => [params['query']], :limit => 10, :offset => 10 * (page.to_i-1))
     else
-      @messages = Message.all(:limit => 20).reverse
+      @messages = Message.all(:limit => 10, :offset => 10 * (page.to_i-1), :order => [:created_at.desc])
     end
     display @messages
   end

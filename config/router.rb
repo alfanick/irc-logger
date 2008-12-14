@@ -45,5 +45,5 @@ Merb::Router.prepare do |r|
   default_routes
   
   # Change this for your home page to be available at /
-  match('/').to(:controller => 'frontend', :action =>'index')
+  match('/').to(:controller => 'frontend', :action =>'index').name(:frontend)
 end
