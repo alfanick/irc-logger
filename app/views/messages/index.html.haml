@@ -1,3 +1,6 @@
 #results.irc
-  - for message in @messages
-    = talk_with(message, 3)
+  - if not @messages.empty?
+    - for message in @messages
+      = talk_with(message, 3)
+  - else
+    %p.result.error Sorry, but the phrase was not found.
