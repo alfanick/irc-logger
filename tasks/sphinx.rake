@@ -30,12 +30,12 @@ namespace :sphinx do
     s = :default
     
     begin
-      repository(s).adapter.query('DROP VIEW "Messages";')
+      repository(s).adapter.query('DROP VIEW "MessagesView";')
     rescue Exception
       puts $!
     end
     begin
-      repository(s).adapter.query('CREATE VIEW "Messages" AS SELECT messages.id, guys.nickname, servers.host, servers.name AS server_name, channels.name AS channel_name, messages.event, messages.content FROM (((messages JOIN guys ON (((messages.guy_nickname)::text = (guys.nickname)::text))) JOIN channels ON ((messages.channel_id = channels.id))) JOIN servers ON (((channels.server_host)::text = (servers.host)::text)));')
+      repository(s).adapter.query('CREATE VIEW "MessagesView" AS SELECT messages.id AS id, guys.nickname AS nickname, servers.host AS host, servers.name AS server, channels.name AS channel, messages.event AS event, messages.content AS content FROM (((messages JOIN guys ON (((messages.guy_nickname)::text = (guys.nickname)::text))) JOIN channels ON ((messages.channel_id = channels.id))) JOIN servers ON (((channels.server_host)::text = (servers.host)::text)));')
     rescue Exception
       puts $!
     end
