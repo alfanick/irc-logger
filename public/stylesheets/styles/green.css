@@ -1,3 +1,7 @@
+#main a {
+  color: #000000; }
+  #main a:hover {
+    color: #17d706; }
 #main #header {
   background-color: #0eba00; }
   #main #header h1 {
@@ -10,6 +14,10 @@
     color: #ffffff; }
 #main #content #results .irc.talk {
   background-color: #eeffe6; }
+#main #content #pagination a {
+  text-decoration: none; }
+  #main #content #pagination a:hover {
+    text-decoration: underline; }
 #main #footer ul.menu li a {
   color: #000000; }
 #main #footer ul.menu li.current {

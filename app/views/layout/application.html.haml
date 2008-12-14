@@ -16,6 +16,7 @@
       #content
         %form#search{:action => '/messages'}
           %input.query{:type=>'text', :name=>'query', :value => params['query']}
+          %input{:type=>'hidden', :name=>'page', :value=>'1'}
           %input.submit{:type=>'submit', :value=>'Search'}
       
         - if message[:notice]

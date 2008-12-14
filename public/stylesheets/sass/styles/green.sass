@@ -10,6 +10,12 @@
 !result_bg = #eeffe6
 
 #main
+  a
+    :color = !link_fg
+    
+    &:hover
+      :color = !link_hv
+
   #header
     :background-color = !highlight_bg
     
@@ -28,6 +34,13 @@
     #results
       .irc.talk
         :background-color = !result_bg
+    
+    #pagination
+      a
+        :text-decoration none
+      
+        &:hover
+          :text-decoration underline
   
   #footer
     ul.menu
