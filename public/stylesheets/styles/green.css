@@ -13,7 +13,8 @@
     background-color: #0eba00;
     color: #ffffff; }
 #main #content #results .irc.talk {
-  background-color: #eeffe6; }
+  background-color: #eeffe6;
+  border-bottom-color: #00720f; }
 #main #content #pagination a {
   text-decoration: none; }
   #main #content #pagination a:hover {

@@ -6,10 +6,10 @@ on line 2 of /home/alfanick/Projekty/irc-logger/public/stylesheets/sass/componen
 2:   +sans
 3: 
 4:   .irc.talk
-5:   
-6:     ol
-7:       :padding 0
-8:       :margin 0
+5:     :padding 1em
+6:     
+7:     :border-bottom 1px solid black
+8:   
 
 
 Backtrace:
@@ -23,7 +23,7 @@ Backtrace:
 /usr/lib/ruby/gems/1.8/gems/haml-2.0.5/lib/sass/plugin.rb:65:in `update_stylesheets'
 /usr/lib/ruby/gems/1.8/gems/haml-2.0.5/lib/sass/plugin.rb:53:in `each'
 /usr/lib/ruby/gems/1.8/gems/haml-2.0.5/lib/sass/plugin.rb:53:in `update_stylesheets'
-/usr/lib/ruby/gems/1.8/gems/merb-haml-1.0.3/lib/merb-haml/merbtasks.rb:8
+/usr/lib/ruby/gems/1.8/gems/merb-haml-1.0.4/lib/merb-haml/merbtasks.rb:8
 /usr/lib/ruby/gems/1.8/gems/rake-0.8.3/lib/rake.rb:617:in `call'
 /usr/lib/ruby/gems/1.8/gems/rake-0.8.3/lib/rake.rb:617:in `execute'
 /usr/lib/ruby/gems/1.8/gems/rake-0.8.3/lib/rake.rb:612:in `each'
@@ -48,4 +48,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Sass::SyntaxError: Undefined mixin 'sans'.\A on line 2 of /home/alfanick/Projekty/irc-logger/public/stylesheets/sass/components/irc.sass\A \A 1: #results.irc\A 2:   +sans\A 3: \A 4:   .irc.talk\A 5:   \A 6:     ol\A 7:       :padding 0\A 8:       :margin 0\A "; }
+  content: "Sass::SyntaxError: Undefined mixin 'sans'.\A on line 2 of /home/alfanick/Projekty/irc-logger/public/stylesheets/sass/components/irc.sass\A \A 1: #results.irc\A 2:   +sans\A 3: \A 4:   .irc.talk\A 5:     :padding 1em\A 6:     \A 7:     :border-bottom 1px solid black\A 8:   \A "; }

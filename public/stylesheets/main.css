@@ -17,12 +17,17 @@ ul.menu, ol.menu {
 
 #results.irc {
   font-family: "Lucida Sans Unicode", "DejaVu Sans", "Verdana", sans-serif; }
-  #results.irc .irc.talk ol {
-    padding: 0;
-    margin: 0;
-    list-style: none; }
-    #results.irc .irc.talk ol li {
-      margin-left: 1em; }
+  #results.irc .irc.talk {
+    padding: 1em;
+    border-bottom: 1px solid black; }
+    #results.irc .irc.talk em.date, #results.irc .irc.talk em.server, #results.irc .irc.talk h2 {
+      font-family: "Liberation Mono", "Dejavu Sans Mono", "Monaco", "Consolas", "Courier New", monospace;
+      display: inline;
+      font-size: 0.9em; }
+    #results.irc .irc.talk ol {
+      padding: 0;
+      margin: 0;
+      list-style: none; }
       #results.irc .irc.talk ol li code {
         font-family: "Liberation Mono", "Dejavu Sans Mono", "Monaco", "Consolas", "Courier New", monospace;
         font-size: 0.9em; }

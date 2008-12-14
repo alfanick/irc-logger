@@ -2,6 +2,16 @@
   +sans
 
   .irc.talk
+    :padding 1em
+    
+    :border-bottom 1px solid black
+  
+    em.date, em.server, h2
+      +code_view
+      
+      :display inline
+      
+      :font-size 0.9em
   
     ol
       :padding 0
@@ -10,8 +20,6 @@
       :list-style none
       
       li
-        :margin-left 1em
-      
         code
           +code_view
           
@@ -19,3 +27,4 @@
         
           &.notice
             :font-size 0.8em
+            

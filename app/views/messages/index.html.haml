@@ -4,7 +4,8 @@
       = talk_with(message, 3)
   - else
     %p.result.error= "Sorry, but the phrase <em>%s</em> was not found." % h(params[:query])
-#pagination
-  - if params[:page].to_i > 1
-    = link_to 'Previous page', url(:search, :query =>params[:query], :page => params[:page].to_i-1), :class=>'previous'
-  = link_to 'Next page', url(:search, :query =>params[:query], :page => params[:page].to_i+1), :class=>'next'
+- if not @messages.empty?
+  #pagination
+    - if params[:page].to_i > 1
+      = link_to 'Previous page', url(:search, :query =>params[:query], :page => params[:page].to_i-1), :class=>'previous'
+    = link_to 'Next page', url(:search, :query =>params[:query], :page => params[:page].to_i+1), :class=>'next'
