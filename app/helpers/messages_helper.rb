@@ -37,7 +37,7 @@ module Merb
     
     def read_more (message)
       if params.include? 'count'
-        c = params['count'].to_i + 10
+        c = params['count'].to_i + 20
       else
         c = 20
       end
