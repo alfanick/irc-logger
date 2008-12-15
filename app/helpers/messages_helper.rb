@@ -15,7 +15,10 @@ module Merb
         end
         '<code class="irc message">' + c + '</code>'
       else
-        '<code class="irc notice">' + h("*** #{message.content}") + '</code>'
+        c = h("*** #{message.content}")
+        # Create link to username
+        c.sub! message.guy.nickname, link_to(message.guy.nickname, url(:show_guy, :nickname => message.guy.nickname))
+        '<code class="irc notice">' + c + '</code>'
       end
     end
   
