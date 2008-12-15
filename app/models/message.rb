@@ -20,9 +20,9 @@ class Message
     end
   
     if n > 0
-      channel.messages.all(:limit => n, :created_at.gt => created_at, :event => e)
+      channel.messages.all(:limit => n, :created_at.gt => created_at, :order => [:created_at.asc], :event => e)
     else
-      channel.messages.all(:limit => n.abs, :order => [:created_at.desc], :created_at.lt => created_at, :event => e).reverse
+      channel.messages.all(:limit => n.abs, :order => [:created_at.desc], :created_at.lt => created_at, :event => e).reverse!
     end
   end
   
