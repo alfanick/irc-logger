@@ -30,11 +30,12 @@ Merb::Router.prepare do |r|
   resources :servers
   resources :guys
   
-  match('/messages/:page').to(:controller => 'messages', :action => 'index').name('search')
-  resources :messages
+  match('/messages/:page').to(:controller => 'messages', :action => 'index').name(:search)
+  match('/message/:id').to(:controller => 'messages', :action => 'show').name(:show_message)
+  
   resources :channels
   
-  match('/about').to(:controller => 'frontend', :action => 'about').name('about')
+  match('/about').to(:controller => 'frontend', :action => 'about').name(:about)
   
   
   # Adds the required routes for merb-auth using the password slice

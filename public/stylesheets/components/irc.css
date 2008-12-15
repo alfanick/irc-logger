@@ -9,7 +9,7 @@ on line 2 of /home/alfanick/Projekty/irc-logger/public/stylesheets/sass/componen
 5:     :padding 1em
 6:     
 7:     :border-bottom 1px solid black
-8:   
+8:     
 
 
 Backtrace:
@@ -48,4 +48,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Sass::SyntaxError: Undefined mixin 'sans'.\A on line 2 of /home/alfanick/Projekty/irc-logger/public/stylesheets/sass/components/irc.sass\A \A 1: #results.irc\A 2:   +sans\A 3: \A 4:   .irc.talk\A 5:     :padding 1em\A 6:     \A 7:     :border-bottom 1px solid black\A 8:   \A "; }
+  content: "Sass::SyntaxError: Undefined mixin 'sans'.\A on line 2 of /home/alfanick/Projekty/irc-logger/public/stylesheets/sass/components/irc.sass\A \A 1: #results.irc\A 2:   +sans\A 3: \A 4:   .irc.talk\A 5:     :padding 1em\A 6:     \A 7:     :border-bottom 1px solid black\A 8:     \A "; }

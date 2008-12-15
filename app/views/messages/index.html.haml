@@ -3,7 +3,7 @@
     - for message in @messages
       = talk_with(message, 3)
   - else
-    - if params.include? :page
+    - if params.include? :page and params[:page].to_i > 1
       %p.result.error= "No more search results... Back to %s." % link_to('previous page', url(:search, :query => params[:query], :page => params[:page].to_i-1))
     - else
       %p.result.error= "Sorry, but the phrase <em>%s</em> was not found." % h(params[:query])

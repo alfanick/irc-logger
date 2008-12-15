@@ -28,7 +28,8 @@ module Merb
         end
       end
       str << '</ol>'
-      str << "<em class=\"date\">#{ms.last.created_at}</em>"
+      str << "<em class=\"date\">#{ms.last.created_at}</em><br/>"
+      str << link_to("Read more", url(:show_message, :id => message.id), :class => 'action')
       str << '</div>'
       
       str

@@ -20,7 +20,9 @@ ul.menu, ol.menu {
   #results.irc .irc.talk {
     padding: 1em;
     border-bottom: 1px solid black; }
-    #results.irc .irc.talk em.date, #results.irc .irc.talk em.server, #results.irc .irc.talk h2 {
+    #results.irc .irc.talk a.action {
+      font-weight: bold; }
+    #results.irc .irc.talk em.date, #results.irc .irc.talk em.server, #results.irc .irc.talk h2, #results.irc .irc.talk a.action {
       font-family: "Liberation Mono", "Dejavu Sans Mono", "Monaco", "Consolas", "Courier New", monospace;
       display: inline;
       font-size: 0.9em; }
