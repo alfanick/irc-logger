@@ -29,10 +29,20 @@ module Merb
       end
       str << '</ol>'
       str << "<em class=\"date\">#{ms.last.created_at}</em><br/>"
-      str << link_to("Read more", url(:show_message, :id => message.id), :class => 'action')
+      str << read_more(message)
       str << '</div>'
       
       str
+    end
+    
+    def read_more (message)
+      if params.include? 'count'
+        c = params['count'].to_i + 10
+      else
+        c = 20
+      end
+    
+      link_to("Read more", url(:show_message, :id => message.id, :count => c), :class => 'action')
     end
   end
 end # Merb
