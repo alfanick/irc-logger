@@ -1,7 +1,7 @@
 module Merb
   module MessagesHelper
     def format_message (message)  
-      Merb::Cache[:default].fetch(message.id.to_s + "_format", :interval => Time.now.to_i / 3600) do
+      Merb::Cache[:default].fetch(message.id.to_s + "_format", :interval => Time.now.to_i / Merb::Config[:cache]["intervals"]["format_message"]) do
         if message.event == :message
           # HTML encode
           c = h("<#{message.guy.nickname}> #{message.content}")
@@ -25,7 +25,7 @@ module Merb
     end
   
     def talk_with (message, n=5)
-      Merb::Cache[:default].fetch("#{message.id}_#{n}_talk", :interval => Time.now.to_i / 300) do
+      Merb::Cache[:default].fetch("#{message.id}_#{n}_talk", :interval => Time.now.to_i / Merb::Config[:cache]["intervals"]["talk_with"]) do
         str = '<div class="irc talk">'
         str << "<h2>#{message.channel.name}</h2> <em class=\"server\">#{message.channel.server.name}</em> "
         ms = message.with_surroundings(n, false)

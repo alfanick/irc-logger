@@ -1,0 +1,9 @@
+---
+servers:
+  - 127.0.0.1:11211
+intervals:
+  weight_search: 3600
+  related: 3600
+
+  format_message: 86400
+  talk_with: 21600

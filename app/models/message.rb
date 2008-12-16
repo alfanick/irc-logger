@@ -14,7 +14,7 @@ class Message
   
   # Thank you shanna
   def self.weight_search(search_options = {}, options = {})
-    Merb::Cache[:default].fetch(Digest::SHA1.hexdigest(search_options.inspect) + "_search", :interval => Time.now.to_i / 300) do
+    Merb::Cache[:default].fetch(Digest::SHA1.hexdigest(search_options.inspect) + "_search", :interval => Time.now.to_i / Merb::Config[:cache]["intervals"]["weight_search"]) do
       docs = repository(:search){self.all(search_options)}
       ids = docs.map{|doc| doc[:id]}
       results = self.all(options.merge(:id => ids))
@@ -25,7 +25,7 @@ class Message
   end 
   
   def related(n, events=true)
-    Merb::Cache[:default].fetch("#{self.id}_#{n}_#{events}_related", :interval => Time.now.to_i / 300) do
+    Merb::Cache[:default].fetch("#{self.id}_#{n}_#{events}_related", :interval => Time.now.to_i / Merb::Config[:cache]["intervals"]["related"]) do
       if events
         e = [:message, :join, :mode, :part, :kick]
       else

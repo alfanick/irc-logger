@@ -15,6 +15,8 @@ Merb::Config.use do |c|
   c[:session_id_key] = 'irc_logger_session_id' # cookie session id key, defaults to "_session_id"
   
   c[:irc_default_server] = 'irc.freenode.net'
+  
+  c[:cache] = YAML::load_file('config/cache.yml')
 end
  
  
@@ -22,9 +24,9 @@ Merb::BootLoader.before_app_loads do
   # This will get executed after dependencies have been loaded but before your app's classes have loaded.
   DataMapper.setup(:search, 'sphinx://localhost/./config/sphinx.conf')
   Merb::Cache.setup do
-    register(:memory_store, Merb::Cache::MemcachedStore, :namespace => "irc-logger", :servers => ["127.0.0.1:11211"])
-    register(:page_store, Merb::Cache::PageStore[Merb::Cache::FileStore], :dir => Merb.root / "public")
-    register(:default, Merb::Cache::AdhocStore[:memory_store, :page_store])
+    register(:memory_store, Merb::Cache::MemcachedStore, :namespace => "irc-logger", :servers => Merb::Config[:cache]["servers"])
+#    register(:page_store, Merb::Cache::PageStore[Merb::Cache::FileStore], :dir => Merb.root / "public")
+    register(:default, Merb::Cache::AdhocStore[:memory_store])
 
   end
 end
