@@ -1,5 +1,5 @@
 class Message
-  include DataMapper::Resource
+  include DataMapper::SphinxResource
   
   property :id, Serial
 
@@ -10,7 +10,15 @@ class Message
   belongs_to :guy
   belongs_to :channel
   
-  is :searchable
+  # Thank you shanna
+  def self.weight_search(search_options = {}, options = {})
+    docs = repository(:search){self.all(search_options)}
+    ids = docs.map{|doc| doc[:id]}
+    results = self.all(options.merge(:id => ids))
+ 
+    # Sort by the ids which are ordered by :weight in the first place.
+    results.sort{|a, b| ids.index(a.id) <=> ids.index(b.id)}
+  end 
   
   def related(n, events=true)
     if events
