@@ -37,15 +37,15 @@ module Merb
           c = msg.class.name
           cid = c + "_#{msg.id}"
           if msg == message
-            str << "<li class=\"result #{c}\" id=\"#{cid}\"><strong>" << format_message(msg) << '</strong></li>'
+            str << "<li class=\"result #{c}\" id=\"#{cid}\"><strong>" << format_message(msg) << "</strong></li>\n"
           else
-            str << "<li class=\"#{c}\" id=\"#{cid}\">" << format_message(msg) << "</li>"
+            str << "<li class=\"#{c}\" id=\"#{cid}\">" << format_message(msg) << "</li>\n"
           end
         end
         str << '</ol>'
         str << "<em class=\"date\">#{ms.last.created_at}</em><br/>"
         str << read_more(message)
-        str << '</div>'
+        str << "</div>\n"
         
         str
       end
