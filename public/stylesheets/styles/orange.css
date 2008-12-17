@@ -1,0 +1,32 @@
+body {
+  color: #060010; }
+
+#main a {
+  color: #060010; }
+  #main a:hover {
+    color: #ff722d; }
+#main #header {
+  background-color: #e05018; }
+  #main #header h1 {
+    color: #ffffff; }
+#main #content form#search {
+  background-color: #de6518;
+  color: #000000; }
+  #main #content form#search input.submit {
+    background-color: #e05018;
+    color: #ffffff; }
+#main #content #results .irc.talk {
+  background-color: #ffece3;
+  border-bottom-color: #ff9e2d; }
+#main #content #pagination a {
+  text-decoration: none; }
+  #main #content #pagination a:hover {
+    text-decoration: underline; }
+#main #footer ul.menu li a {
+  color: #060010; }
+#main #footer ul.menu li.current {
+  background-color: #e05018; }
+  #main #footer ul.menu li.current a {
+    color: #ffffff; }
+#main #footer ul.menu li:hover {
+  background-color: #ff722d; }
