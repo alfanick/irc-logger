@@ -21,16 +21,14 @@ end
  
  
 Merb::BootLoader.before_app_loads do
-  # This will get executed after dependencies have been loaded but before your app's classes have loaded.
   DataMapper.setup(:search, 'sphinx://localhost/./config/sphinx.conf')
   Merb::Cache.setup do
     register(:memory_store, Merb::Cache::MemcachedStore, :namespace => "irc-logger", :servers => Merb::Config[:cache]["servers"]) if not exists?(:memory_store)
-#    register(:page_store, Merb::Cache::PageStore[Merb::Cache::FileStore], :dir => Merb.root / "public")
     register(:default, Merb::Cache::AdhocStore[:memory_store]) if not exists?(:default)
 
   end
 end
  
 Merb::BootLoader.after_app_loads do
-  # This will get executed after your app's classes have been loaded. 
+  require 'lib/fixtures.rb'
 end
