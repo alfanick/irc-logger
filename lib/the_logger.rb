@@ -88,7 +88,7 @@ class TheLogger < IRCBot
         guy = Guy.first_or_create(:nickname => user)
         guy.save
       
-        ch = @server.channels.first_or_create(:name => channel, :status => :enabled, :server => @server)
+        ch = @server.channels.first_or_create(:name => channel.downcase, :status => :enabled, :server => @server)
         ch.save!
       
         msg = Message.new(:content => text, :channel => ch, :guy => guy, :event => event)
