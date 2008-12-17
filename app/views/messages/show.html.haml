@@ -1,4 +1,5 @@
 #results.irc
-  - c = params['count'].to_i if params.include? 'count' else 20
-  = talk_with(@message, -5..c)
+  - c = params['count'].to_i
+  - b = params['bcount'].to_i
+  = talk_with(@message, -b..c)
 

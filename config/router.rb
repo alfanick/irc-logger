@@ -31,7 +31,7 @@ Merb::Router.prepare do |r|
   resources :guys
   
   match('/messages/:page').to(:controller => 'messages', :action => 'index').name(:search)
-  match('/message/:id/:count').to(:controller => 'messages', :action => 'show').name(:show_message)
+  match('/message/:id/:bcount/:count').to(:controller => 'messages', :action => 'show').name(:show_message)
   
   match('/guy/:nickname').to(:controller => 'guys', :action => 'show').name(:show_guy)
   

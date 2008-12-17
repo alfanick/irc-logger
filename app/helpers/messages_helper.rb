@@ -1,5 +1,6 @@
 module Merb
   module MessagesHelper
+    # Format Message to HTML
     def format_message (message)  
       Merb::Cache[:default].fetch(message.id.to_s + "_format", :interval => Time.now.to_i / Merb::Config[:cache]["intervals"]["format_message"]) do
         if message.event == :message
@@ -29,7 +30,8 @@ module Merb
         str = '<div class="irc talk">'
         str << "<h2>#{message.channel.name}</h2> <em class=\"server\">#{message.channel.server.name}</em> "
         ms = message.with_surroundings(n, false)
-        str << "<em class=\"date\">#{ms.first.created_at}</em>"
+        str << "<em class=\"date\">#{ms.first.created_at}</em><br/>"
+        str << read_more(message, false)
         str << '<ol>'
         ms.each do |msg|
           c = msg.class.name
@@ -49,14 +51,20 @@ module Merb
       end
     end
     
-    def read_more (message)
-      if params.include? 'count'
+    def read_more (message, down=true)
+      b = 10
+      c = 20
+      
+      b = params['bcount'].to_i if params['bcount']
+      c = params['count'].to_i if params['count']
+    
+      if down
         c = params['count'].to_i + 20
       else
-        c = 20
+        b = params['bcount'].to_i + 10
       end
-    
-      link_to("Read more", url(:show_message, :id => message.id, :count => c), :class => 'action')
+
+      link_to("Read more", url(:show_message, :id => message.id, :count => c, :bcount => b), :class => 'action')
     end
   end
 end # Merb
