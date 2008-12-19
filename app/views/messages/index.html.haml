@@ -11,5 +11,5 @@
   #pagination
     - if params[:page].to_i > 1
       = link_to 'Previous page', url(:search, :query => params[:query], :page => params[:page].to_i-1), :class => 'previous'
-    - if @messages.count >= 10
+    - if @messages.size >= 10
       = link_to 'Next page', url(:search, :query => params[:query], :page => params[:page].to_i+1), :class => 'next'
