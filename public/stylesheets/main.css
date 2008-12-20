@@ -80,12 +80,10 @@ body {
         width: 70%;
         float: left; }
   #main #content {
+    font-family: "Lucida Sans Unicode", "DejaVu Sans", "Verdana", sans-serif;
     padding-left: 1em;
     padding-right: 1em;
     padding-bottom: 0.2em; }
-    #main #content h1, #main #content h2, #main #content h3, #main #content h4, #main #content h5, #main #content h6 {
-      margin: 0;
-      padding: 0; }
     #main #content #pagination {
       margin-top: 1em;
       margin-bottom: 1em;
