@@ -5,4 +5,9 @@ class Guy
   property :created_at, DateTime
 
   has n, :messages
+  
+  # Return channel list where the Guy was
+  def channels
+    messages.map { |m| m.channel }.uniq
+  end
 end

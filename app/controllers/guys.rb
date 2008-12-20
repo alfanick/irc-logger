@@ -6,8 +6,8 @@ class Guys < Application
     display @guys
   end
 
-  def show(id)
-    @guy = Guy.get(id)
+  def show(nickname)
+    @guy = Guy.get(nickname)
     raise NotFound unless @guy
     display @guy
   end
