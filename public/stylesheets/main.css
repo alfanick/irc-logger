@@ -83,7 +83,19 @@ body {
     font-family: "Lucida Sans Unicode", "DejaVu Sans", "Verdana", sans-serif;
     padding-left: 1em;
     padding-right: 1em;
-    padding-bottom: 0.2em; }
+    padding-bottom: 1em; }
+    #main #content h3 {
+      padding: 0;
+      margin: 0; }
+    #main #content h2.nickname {
+      font-size: 3em;
+      padding: 0;
+      margin: 0; }
+    #main #content ul.about {
+      list-style-type: none;
+      font-size: 1.8em;
+      vertical-align: middle;
+      text-align: right; }
     #main #content #pagination {
       margin-top: 1em;
       margin-bottom: 1em;
@@ -98,9 +110,11 @@ body {
           float: right; }
           #main #content #pagination a.next:after {
             content: " »"; }
-  #main #footer ul.menu {
-    font-family: "Liberation Mono", "Dejavu Sans Mono", "Monaco", "Consolas", "Courier New", monospace;
-    text-transform: uppercase;
-    font-size: 0.7em; }
-    #main #footer ul.menu li {
-      padding: 1em; }
+  #main #footer {
+    margin-top: 1em; }
+    #main #footer ul.menu {
+      font-family: "Liberation Mono", "Dejavu Sans Mono", "Monaco", "Consolas", "Courier New", monospace;
+      text-transform: uppercase;
+      font-size: 0.7em; }
+      #main #footer ul.menu li {
+        padding: 1em; }
