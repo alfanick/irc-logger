@@ -20,9 +20,13 @@ body
       :background-color = !search_bg
       :color = !search_fg
       
+      input.query
+        :background-color = !search_field_bg
+        :color = !search_field_fg
+      
       input.submit
-        :background-color = !highlight_bg
-        :color = !highlight_fg
+        :background-color = !search_button_bg
+        :color = !search_button_fg
     
     #results
       .irc.talk

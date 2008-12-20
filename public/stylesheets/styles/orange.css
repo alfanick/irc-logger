@@ -13,6 +13,9 @@ body {
 #main #content form#search {
   background-color: #de6518;
   color: #000000; }
+  #main #content form#search input.query {
+    background-color: #ffffff;
+    color: #060010; }
   #main #content form#search input.submit {
     background-color: #e05018;
     color: #ffffff; }
