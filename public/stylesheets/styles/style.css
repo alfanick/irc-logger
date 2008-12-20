@@ -1,0 +1,54 @@
+/*
+Sass::SyntaxError: Undefined constant: "!main_fg".
+on line 2 of /home/alfanick/Projekty/irc-logger/public/stylesheets/sass/styles/style.sass
+
+1: body
+2:   :color = !main_fg
+3: 
+4: #main
+5:   a
+6:     :color = !link_fg
+7:     
+8:     &:hover
+
+
+Backtrace:
+/home/alfanick/Projekty/irc-logger/public/stylesheets/sass/styles/style.sass:2
+/usr/lib/ruby/gems/1.8/gems/haml-2.0.6/lib/sass/constant.rb:209:in `get_constant'
+/usr/lib/ruby/gems/1.8/gems/haml-2.0.6/lib/sass/constant.rb:192:in `operationalize'
+/usr/lib/ruby/gems/1.8/gems/haml-2.0.6/lib/sass/constant.rb:182:in `operationalize'
+/usr/lib/ruby/gems/1.8/gems/haml-2.0.6/lib/sass/constant.rb:45:in `parse'
+/usr/lib/ruby/gems/1.8/gems/haml-2.0.6/lib/sass/engine.rb:329:in `parse_attribute'
+/usr/lib/ruby/gems/1.8/gems/haml-2.0.6/lib/sass/engine.rb:282:in `parse_line'
+/usr/lib/ruby/gems/1.8/gems/haml-2.0.6/lib/sass/engine.rb:187:in `build_tree'
+/usr/lib/ruby/gems/1.8/gems/haml-2.0.6/lib/sass/engine.rb:237:in `build_tree'
+/usr/lib/ruby/gems/1.8/gems/haml-2.0.6/lib/sass/engine.rb:116:in `render_to_tree'
+/usr/lib/ruby/gems/1.8/gems/haml-2.0.6/lib/sass/engine.rb:88:in `render'
+/usr/lib/ruby/gems/1.8/gems/haml-2.0.6/lib/sass/plugin.rb:65:in `update_stylesheets'
+/usr/lib/ruby/gems/1.8/gems/haml-2.0.6/lib/sass/plugin.rb:53:in `each'
+/usr/lib/ruby/gems/1.8/gems/haml-2.0.6/lib/sass/plugin.rb:53:in `update_stylesheets'
+/usr/lib/ruby/gems/1.8/gems/haml-2.0.6/lib/sass/plugin/merb.rb:31:in `call'
+/usr/lib/ruby/gems/1.8/gems/passenger-2.0.3/lib/passenger/rack/request_handler.rb:65:in `process_request'
+/usr/lib/ruby/gems/1.8/gems/passenger-2.0.3/lib/passenger/abstract_request_handler.rb:163:in `main_loop'
+/usr/lib/ruby/gems/1.8/gems/passenger-2.0.3/lib/passenger/rack/application_spawner.rb:92:in `run'
+/usr/lib/ruby/gems/1.8/gems/passenger-2.0.3/lib/passenger/rack/application_spawner.rb:50:in `spawn_application'
+/usr/lib/ruby/gems/1.8/gems/passenger-2.0.3/lib/passenger/utils.rb:165:in `safe_fork'
+/usr/lib/ruby/gems/1.8/gems/passenger-2.0.3/lib/passenger/utils.rb:163:in `fork'
+/usr/lib/ruby/gems/1.8/gems/passenger-2.0.3/lib/passenger/utils.rb:163:in `safe_fork'
+/usr/lib/ruby/gems/1.8/gems/passenger-2.0.3/lib/passenger/rack/application_spawner.rb:48:in `spawn_application'
+/usr/lib/ruby/gems/1.8/gems/passenger-2.0.3/lib/passenger/utils.rb:165:in `safe_fork'
+/usr/lib/ruby/gems/1.8/gems/passenger-2.0.3/lib/passenger/utils.rb:163:in `fork'
+/usr/lib/ruby/gems/1.8/gems/passenger-2.0.3/lib/passenger/utils.rb:163:in `safe_fork'
+/usr/lib/ruby/gems/1.8/gems/passenger-2.0.3/lib/passenger/rack/application_spawner.rb:47:in `spawn_application'
+/usr/lib/ruby/gems/1.8/gems/passenger-2.0.3/lib/passenger/rack/application_spawner.rb:33:in `spawn_application'
+/usr/lib/ruby/gems/1.8/gems/passenger-2.0.3/lib/passenger/spawn_manager.rb:110:in `spawn_application'
+/usr/lib/ruby/gems/1.8/gems/passenger-2.0.3/lib/passenger/spawn_manager.rb:247:in `handle_spawn_application'
+/usr/lib/ruby/gems/1.8/gems/passenger-2.0.3/lib/passenger/abstract_server.rb:317:in `__send__'
+/usr/lib/ruby/gems/1.8/gems/passenger-2.0.3/lib/passenger/abstract_server.rb:317:in `main_loop'
+/usr/lib/ruby/gems/1.8/gems/passenger-2.0.3/lib/passenger/abstract_server.rb:168:in `start_synchronously'
+/usr/lib/ruby/gems/1.8/gems/passenger-2.0.3/bin/passenger-spawn-server:46
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Sass::SyntaxError: Undefined constant: \"!main_fg\".\A on line 2 of /home/alfanick/Projekty/irc-logger/public/stylesheets/sass/styles/style.sass\A \A 1: body\A 2:   :color = !main_fg\A 3: \A 4: #main\A 5:   a\A 6:     :color = !link_fg\A 7:     \A 8:     &:hover\A "; }

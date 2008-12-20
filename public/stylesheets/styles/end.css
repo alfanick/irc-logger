@@ -1,0 +1,55 @@
+/*
+Sass::SyntaxError: Undefined constant: "!main_fg".
+on line 2 of /home/alfanick/Projekty/irc-logger/public/stylesheets/sass/styles/end.sass
+
+1: body
+2:   :color = !main_fg
+3:   :background-color = !main_bg
+4: 
+5: #main
+6:   a
+7:     :color = !link_fg
+8:     
+
+
+Backtrace:
+/home/alfanick/Projekty/irc-logger/public/stylesheets/sass/styles/end.sass:2
+/usr/lib/ruby/gems/1.8/gems/haml-2.0.6/lib/sass/constant.rb:209:in `get_constant'
+/usr/lib/ruby/gems/1.8/gems/haml-2.0.6/lib/sass/constant.rb:192:in `operationalize'
+/usr/lib/ruby/gems/1.8/gems/haml-2.0.6/lib/sass/constant.rb:182:in `operationalize'
+/usr/lib/ruby/gems/1.8/gems/haml-2.0.6/lib/sass/constant.rb:45:in `parse'
+/usr/lib/ruby/gems/1.8/gems/haml-2.0.6/lib/sass/engine.rb:329:in `parse_attribute'
+/usr/lib/ruby/gems/1.8/gems/haml-2.0.6/lib/sass/engine.rb:282:in `parse_line'
+/usr/lib/ruby/gems/1.8/gems/haml-2.0.6/lib/sass/engine.rb:187:in `build_tree'
+/usr/lib/ruby/gems/1.8/gems/haml-2.0.6/lib/sass/engine.rb:237:in `build_tree'
+/usr/lib/ruby/gems/1.8/gems/haml-2.0.6/lib/sass/engine.rb:116:in `render_to_tree'
+/usr/lib/ruby/gems/1.8/gems/haml-2.0.6/lib/sass/engine.rb:88:in `render'
+/usr/lib/ruby/gems/1.8/gems/haml-2.0.6/lib/sass/plugin.rb:65:in `update_stylesheets'
+/usr/lib/ruby/gems/1.8/gems/haml-2.0.6/lib/sass/plugin.rb:53:in `each'
+/usr/lib/ruby/gems/1.8/gems/haml-2.0.6/lib/sass/plugin.rb:53:in `update_stylesheets'
+/usr/lib/ruby/gems/1.8/gems/merb-haml-1.0.6.1/lib/merb-haml/merbtasks.rb:8
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.3/lib/rake.rb:617:in `call'
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.3/lib/rake.rb:617:in `execute'
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.3/lib/rake.rb:612:in `each'
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.3/lib/rake.rb:612:in `execute'
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.3/lib/rake.rb:578:in `invoke_with_call_chain'
+/usr/lib/ruby/1.8/monitor.rb:242:in `synchronize'
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.3/lib/rake.rb:571:in `invoke_with_call_chain'
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.3/lib/rake.rb:564:in `invoke'
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.3/lib/rake.rb:2019:in `invoke_task'
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.3/lib/rake.rb:1997:in `top_level'
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.3/lib/rake.rb:1997:in `each'
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.3/lib/rake.rb:1997:in `top_level'
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.3/lib/rake.rb:2036:in `standard_exception_handling'
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.3/lib/rake.rb:1991:in `top_level'
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.3/lib/rake.rb:1970:in `run'
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.3/lib/rake.rb:2036:in `standard_exception_handling'
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.3/lib/rake.rb:1967:in `run'
+/usr/lib/ruby/gems/1.8/gems/rake-0.8.3/bin/rake:31
+/usr/bin/rake:19:in `load'
+/usr/bin/rake:19
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Sass::SyntaxError: Undefined constant: \"!main_fg\".\A on line 2 of /home/alfanick/Projekty/irc-logger/public/stylesheets/sass/styles/end.sass\A \A 1: body\A 2:   :color = !main_fg\A 3:   :background-color = !main_bg\A 4: \A 5: #main\A 6:   a\A 7:     :color = !link_fg\A 8:     \A "; }

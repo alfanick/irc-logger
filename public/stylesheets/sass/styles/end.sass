@@ -1,0 +1,53 @@
+body
+  :color = !main_fg
+  :background-color = !main_bg
+
+#main
+  a
+    :color = !link_fg
+    
+    &:hover
+      :color = !link_hv
+
+  #header
+    :background-color = !highlight_bg
+    
+    h1
+      :color = !highlight_fg
+  
+  #content
+    form#search
+      :background-color = !search_bg
+      :color = !search_fg
+      
+      input.submit
+        :background-color = !highlight_bg
+        :color = !highlight_fg
+    
+    #results
+      .irc.talk
+        :background-color = !result_bg
+        
+        :border-bottom-color = !talk_dv_fg
+    
+    #pagination
+      a
+        :text-decoration none
+      
+        &:hover
+          :text-decoration underline
+  
+  #footer
+    ul.menu
+      li
+        a
+          :color = !link_fg
+
+        &.current
+          :background-color = !highlight_bg
+          
+          a
+            :color = !highlight_fg
+        
+        &:hover
+          :background-color = !link_hv
