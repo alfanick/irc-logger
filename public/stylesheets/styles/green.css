@@ -2,35 +2,40 @@ body {
   color: #060010;
   background-color: #ffffff; }
 
-#main a {
-  color: #000000; }
-  #main a:hover {
-    color: #17d706; }
-#main #header {
-  background-color: #0eba00; }
-  #main #header h1 {
-    color: #ffffff; }
-#main #content form#search {
-  background-color: #11eb00;
-  color: #000000; }
-  #main #content form#search input.query {
-    background-color: #ffffff;
+#main {
+  background-color: #eeffe6; }
+  #main a {
+    color: #000000; }
+    #main a:hover {
+      color: #17d706; }
+  #main #header {
+    background-color: #0eba00; }
+    #main #header h1 {
+      color: #ffffff; }
+  #main form#search {
+    background-color: #11eb00;
+    color: #000000; }
+    #main form#search input.query {
+      background-color: #ffffff;
+      color: #060010; }
+    #main form#search input.submit {
+      background-color: #0eba00;
+      color: #ffffff; }
+  #main #content {
+    background-color: #eeffe6;
     color: #060010; }
-  #main #content form#search input.submit {
-    background-color: #0eba00;
-    color: #ffffff; }
-#main #content #results .irc.talk {
-  background-color: #eeffe6;
-  border-bottom-color: #00720f; }
-#main #content #pagination a {
-  text-decoration: none; }
-  #main #content #pagination a:hover {
-    text-decoration: underline; }
-#main #footer ul.menu li a {
-  color: #000000; }
-#main #footer ul.menu li.current {
-  background-color: #0eba00; }
-  #main #footer ul.menu li.current a {
-    color: #ffffff; }
-#main #footer ul.menu li:hover {
-  background-color: #17d706; }
+    #main #content #results .irc.talk {
+      background-color: #eeffe6;
+      border-bottom-color: #00720f; }
+    #main #content #pagination a {
+      text-decoration: none; }
+      #main #content #pagination a:hover {
+        text-decoration: underline; }
+  #main #footer ul.menu li a {
+    color: #000000; }
+  #main #footer ul.menu li.current {
+    background-color: #0eba00; }
+    #main #footer ul.menu li.current a {
+      color: #ffffff; }
+  #main #footer ul.menu li:hover {
+    background-color: #17d706; }

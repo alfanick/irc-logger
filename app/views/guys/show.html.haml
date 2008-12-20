@@ -1,11 +1,10 @@
-#content
-  %h2.nickname= @guy.nickname
-  %ul.about
-    %li= "since <em>%s</em>" % relative_date(@guy.created_at)
-    %li= "was on <em>%i</em> channels" % @guy.channels.size
-    %li= "writed <em>%i</em> messages" % @guy.messages.all(:event => :message).size
-    %li= "latest activity <em>%s</em> ago" % time_ago_in_words(@guy.messages.first(:order => [:created_at.desc]).created_at)
-  %h3 Latest messages
-  #results.irc
-    - @guy.messages.all(:event => :message, :limit => 5, :order => [:created_at.desc]).each do |message|
-      = talk_with(message, 1)
+%h2.nickname= @guy.nickname
+%ul.about
+  %li= "since <em>%s</em>" % relative_date(@guy.created_at)
+  %li= "was on <em>%i</em> channels" % @guy.channels.size
+  %li= "writed <em>%i</em> messages" % @guy.messages.all(:event => :message).size
+  %li= "latest activity <em>%s</em> ago" % time_ago_in_words(@guy.messages.first(:order => [:created_at.desc]).created_at)
+%h3 Latest messages
+#results.irc
+  - @guy.messages.all(:event => :message, :limit => 5, :order => [:created_at.desc]).each do |message|
+    = talk_with(message, 1)

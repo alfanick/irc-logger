@@ -30,29 +30,39 @@ body
         :text-transform lowercase
         :font-size 1em
   
-  #content
-    form#search
-      :padding 0.5em
-      :padding-top 1em
-      :height 3.5em
+  form#search
+    :padding 0.5em
+      :top 1em
+      :bottom 0
+    :height 3.2em
       
-      input
-        +large_text
+    input
+      +large_text
         
-        :margin-left 0.1em
+      :margin-left 0.1em
         
-        :border none
+      :border none
         
-        &.submit
-          :text-transform lowercase
-          :width 25%
-          :float right
-        
-        &.query
-          :padding-left 0.1em
-          :padding-right 0.1em
-          :width 70%
-          :float left
+      &.submit
+        :text-transform lowercase
+        :width 25%
+        :float right
+      
+      &.query
+        :padding-left 0.1em
+        :padding-right 0.1em
+        :width 70%
+        :float left
+  
+  #content
+    :padding
+      :left 1em
+      :right 1em
+      :bottom 0.2em
+      
+    h1, h2, h3, h4, h5, h6
+      :margin 0
+      :padding 0
     
     #pagination
       :margin

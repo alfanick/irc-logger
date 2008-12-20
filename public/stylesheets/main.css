@@ -18,7 +18,10 @@ ul.menu, ol.menu {
 #results.irc {
   font-family: "Lucida Sans Unicode", "DejaVu Sans", "Verdana", sans-serif; }
   #results.irc .irc.talk {
-    padding: 1em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    padding-left: 0.3em;
+    padding-right: 0.3em;
     border-bottom: 1px solid black; }
     #results.irc .irc.talk a.action {
       font-weight: bold; }
@@ -58,37 +61,45 @@ body {
         text-align: right;
         text-transform: lowercase;
         font-size: 1em; }
-  #main #content form#search {
+  #main form#search {
     padding: 0.5em;
     padding-top: 1em;
-    height: 3.5em; }
-    #main #content form#search input {
+    padding-bottom: 0;
+    height: 3.2em; }
+    #main form#search input {
       font-size: 2em;
       margin-left: 0.1em;
       border: none; }
-      #main #content form#search input.submit {
+      #main form#search input.submit {
         text-transform: lowercase;
         width: 25%;
         float: right; }
-      #main #content form#search input.query {
+      #main form#search input.query {
         padding-left: 0.1em;
         padding-right: 0.1em;
         width: 70%;
         float: left; }
-  #main #content #pagination {
-    margin-top: 1em;
-    margin-bottom: 1em;
-    height: 3em; }
-    #main #content #pagination a {
-      font-size: 2em; }
-      #main #content #pagination a.previous {
-        float: left; }
-        #main #content #pagination a.previous:before {
-          content: "« "; }
-      #main #content #pagination a.next {
-        float: right; }
-        #main #content #pagination a.next:after {
-          content: " »"; }
+  #main #content {
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-bottom: 0.2em; }
+    #main #content h1, #main #content h2, #main #content h3, #main #content h4, #main #content h5, #main #content h6 {
+      margin: 0;
+      padding: 0; }
+    #main #content #pagination {
+      margin-top: 1em;
+      margin-bottom: 1em;
+      height: 3em; }
+      #main #content #pagination a {
+        font-size: 2em; }
+        #main #content #pagination a.previous {
+          float: left; }
+          #main #content #pagination a.previous:before {
+            content: "« "; }
+        #main #content #pagination a.next {
+          float: right; }
+          #main #content #pagination a.next:after {
+            content: " »"; }
   #main #footer ul.menu {
     font-family: "Liberation Mono", "Dejavu Sans Mono", "Monaco", "Consolas", "Courier New", monospace;
     text-transform: uppercase;

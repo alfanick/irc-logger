@@ -7,9 +7,9 @@ on line 2 of /home/alfanick/Projekty/irc-logger/public/stylesheets/sass/styles/e
 3:   :background-color = !main_bg
 4: 
 5: #main
-6:   a
-7:     :color = !link_fg
-8:     
+6:   :background-color = !content_bg
+7: 
+8:   a
 
 
 Backtrace:
@@ -52,4 +52,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Sass::SyntaxError: Undefined constant: \"!main_fg\".\A on line 2 of /home/alfanick/Projekty/irc-logger/public/stylesheets/sass/styles/end.sass\A \A 1: body\A 2:   :color = !main_fg\A 3:   :background-color = !main_bg\A 4: \A 5: #main\A 6:   a\A 7:     :color = !link_fg\A 8:     \A "; }
+  content: "Sass::SyntaxError: Undefined constant: \"!main_fg\".\A on line 2 of /home/alfanick/Projekty/irc-logger/public/stylesheets/sass/styles/end.sass\A \A 1: body\A 2:   :color = !main_fg\A 3:   :background-color = !main_bg\A 4: \A 5: #main\A 6:   :background-color = !content_bg\A 7: \A 8:   a\A "; }
