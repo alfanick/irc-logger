@@ -49,12 +49,16 @@ class Message
   end
   
   before :save do
-    guy.messages_count += 1
-    guy.save
+    if event == :message
+      guy.messages_count += 1
+      guy.save!
+    end
   end
   
   before :destroy do
-    guy.messages_count -= 1
-    guy.save
+    if event == :message
+      guy.messages_count -= 1
+      guy.save!
+    end
   end
 end

@@ -7,3 +7,5 @@ intervals:
 
   format_message: 86400
   talk_with: 21600
+  
+  font_size: 21600

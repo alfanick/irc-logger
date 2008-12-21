@@ -3,7 +3,7 @@ class Guy
   
   property :nickname, String, :key => true, :length => (1..60)
   property :created_at, DateTime
-  property :messages_count, Integer
+  property :messages_count, Integer, :default => 0
 
   has n, :messages
   
