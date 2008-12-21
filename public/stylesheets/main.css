@@ -97,7 +97,8 @@ body {
       padding: 0; }
       #main #content p.guys span {
         display: inline;
-        margin-left: 1em; }
+        margin-left: 1em;
+        vertical-align: middle; }
     #main #content ul.about {
       list-style-type: none;
       font-size: 1.8em;
