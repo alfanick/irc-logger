@@ -8,6 +8,10 @@ module Merb
           c = h("<#{message.guy.nickname}> #{message.content}")
           # Create links
           c.sub! /((http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/[^\n ]*)?)/ix, '<a class="external" href="\1">\1</a>'
+          # Strong
+          c.sub! /\*(.+?)\*/, '<strong>\1</strong>'
+          # Emphasis
+          c.sub! /_(.+?)_/, '<em>\1</em>'
           # Create link to username
           c.sub! message.guy.nickname, link_to(message.guy.nickname, url(:show_guy, :nickname => message.guy.nickname))
           if m = c.match("&gt; ([^ ]+)(:|,)")
