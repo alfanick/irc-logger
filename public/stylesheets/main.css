@@ -91,11 +91,12 @@ body {
       font-size: 3em;
       padding: 0;
       margin: 0; }
-    #main #content ol.guys {
-      list-style: none;
+    #main #content p.guys {
       font-size: 1.2em;
-      text-align: center; }
-      #main #content ol.guys li {
+      text-align: center;
+      padding: 0; }
+      #main #content p.guys span {
+        display: inline;
         margin-left: 1em; }
     #main #content ul.about {
       list-style-type: none;
