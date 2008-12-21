@@ -1,8 +1,9 @@
 class Guys < Application
   # provides :xml, :yaml, :js
 
-  def index
-    @guys = Guy.all
+  def index(page=1)
+    @guys = Guy.all(:limit => 200, :offset => 200 * (page.to_i-1))
+    raise NotFound unless not @guys.empty?
     display @guys
   end
 

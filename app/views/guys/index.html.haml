@@ -1,16 +1,10 @@
-%h1
-  Guys controller, index action
-%p
-  Edit this file in
-  %tt
-    app/views/guys/index.html.erb
-%table
-  %tr
-  - for guy in @guys
-    %tr
-      %td
-        = link_to 'Show', url(:guy, guy)
-      %td
-        = link_to 'Edit', url(:edit_guy,  guy)
+%ol.guys
+  - @guys.each do |guy|
+    %li[guy]{"font-size"=>font_size(guy)}= link_to(guy.nickname, url(:show_guy, :nickname => guy.nickname))
 
-= link_to 'New', url(:new_guy)
+- if not @guys.empty?
+  #pagination
+    - if params[:page].to_i > 1
+      = link_to 'Previous page', url(:guys, :page => params[:page].to_i-1), :class => 'previous'
+    - if @guys.to_a.size >= 200
+      = link_to 'Next page', url(:guys, :page => params[:page].to_i+1), :class => 'next'

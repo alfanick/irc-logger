@@ -47,4 +47,14 @@ class Message
       related(-n, events) + [self] + related(n, events)
     end
   end
+  
+  before :save do
+    guy.messages_count += 1
+    guy.save
+  end
+  
+  before :destroy do
+    guy.messages_count -= 1
+    guy.save
+  end
 end

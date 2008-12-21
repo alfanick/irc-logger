@@ -91,6 +91,12 @@ body {
       font-size: 3em;
       padding: 0;
       margin: 0; }
+    #main #content ol.guys {
+      list-style: none;
+      font-size: 1.2em;
+      text-align: center; }
+      #main #content ol.guys li {
+        margin-left: 1em; }
     #main #content ul.about {
       list-style-type: none;
       font-size: 1.8em;
