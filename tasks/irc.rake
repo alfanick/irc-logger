@@ -87,6 +87,19 @@ namespace :irc do
     sv.start
   end
   
+  desc 'Stop listening'
+  task :stop => [:merb_env] do
+    require 'the_logger/supervisor'
+    
+    config = YAML::load_file('config/bot.yml')
+    
+    sv = TheLogger::Supervisor.new(config['server'], config['listeners'])
+    
+    Merb.logger.info "Stopped listening..."
+    
+    sv.stop
+  end
+  
   desc 'Create listener'
   task :listener, [:name] => [:merb_env] do |t, a|
     raise "You must pass listener name" unless a.name
