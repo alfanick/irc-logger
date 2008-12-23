@@ -22,23 +22,28 @@ module TheLogger
     # Start task planning
     def start
       loop do
+        # Go through servers
         Server.all(:status => :enabled).each do |server|
+          # Go through channels
           server.channels.all(:status => :enabled).each do |channel|
+            # Next channel if current channel is watched
             next if @channels.include? channel
-            
+            # Add channel to queue
             @starling.set(next_listener, { :server => server.host, :channel => channel.name })
-            
+            # Mark channel as watched
             @channels.push channel
           end
         end
-        
+        # Next round
         sleep 300
       end
     end
     
     # Stop listening
     def stop
+      # Go through listeners
       @listeners.each do |listener|
+        # Add :exit command to queue
         @starling.set(listener, :exit)
       end
     end
