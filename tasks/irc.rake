@@ -76,9 +76,28 @@ namespace :irc do
   
   desc 'Listen for messages'
   task :listen => [:merb_env] do
-    require 'the_logger'
-    TheLogger.fork_loggers
+    require 'the_logger/supervisor'
+    
+    config = YAML::load_file('config/bot.yml')
+    
+    sv = TheLogger::Supervisor.new(config['server'], config['listeners'])
     
     Merb.logger.info "Listening for messages..."
+    
+    sv.start
+  end
+  
+  desc 'Create listener'
+  task :listener, [:name] => [:merb_env] do |t, a|
+    raise "You must pass listener name" unless a.name
+    
+    require 'the_logger/listener'
+    
+    config = YAML::load_file('config/bot.yml')
+    
+    Merb.logger.info "Created listener..."
+    
+    l = TheLogger::Listener.new(config['server'], a.name)
+    l.run
   end
 end
