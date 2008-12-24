@@ -16,6 +16,7 @@ module TheLogger
     def initialize(server, name)
       @server = Server.first(:host => server)
       @active_channels = { }
+      @active_guys = { }
     
       options = {
         :irc_network => @server.host,
@@ -53,6 +54,16 @@ module TheLogger
       @active_channels[name] or (@active_channels[name] = @server.channels.first(:name => name, :status=>:enabled))
     end
     
+    # Fetch guy object
+    def fetch_guy name
+      if not @active_guys.include? name
+        @active_guys[name] = Guy.first_or_create(:nickname => name)
+        @active_guys[name].save
+      end
+      
+      @active_guys[name]
+    end
+    
     private
       # Repairs the channel name (remove hashes)
       #
@@ -78,8 +89,8 @@ module TheLogger
         channel = repair_channel(channel)
         
         begin
-          guy = Guy.first_or_create(:nickname => user)
-          guy.save
+          guy = fetch_guy(user)
+          return unless guy
         
           ch = fetch_channel(channel)
           return unless ch
