@@ -48,6 +48,15 @@ module TheLogger
       end
     end
     
+    # Clean queues
+    def clean
+      # Go through listener
+      @listeners.each do |listener|
+        # Flush queue
+        @starling.flush(listener) {}
+      end
+    end
+    
     private
       def next_listener
         @last_listener = @listeners.at(@listeners.index(@last_listener).to_i + 1) or @listeners.first

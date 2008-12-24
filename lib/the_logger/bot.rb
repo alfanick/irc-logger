@@ -11,14 +11,15 @@ module TheLogger
     # Initialize the logger. Start listening
     #
     # *Arguments*:
-    # - +server+ - Server - server model
+    # - +server+ - String
     # - +name+ - String
     def initialize(server, name)
-      @server = server
+      @server = Server.first(:host => server)
+      @active_channels = { }
     
       options = {
-        :irc_network => server.host,
-        :port => server.port,
+        :irc_network => @server.host,
+        :port => @server.port,
         :username => "the_logger_#{name}",
         :realname => 'IRC logging bot',
         :nicknames => ["the_logger_#{name}"],
@@ -38,6 +39,18 @@ module TheLogger
       @irc.prepend_handler :incoming_mode, self.method(:r_mode)
       @irc.prepend_handler :incoming_join, self.method(:r_join)
       @irc.prepend_handler :incoming_part, self.method(:r_part)
+    end
+    
+    # Join channel
+    def join channel
+      self.irc.join channel
+      
+      fetch_channel channel
+    end
+    
+    # Fetch channel object
+    def fetch_channel name
+      @active_channels[name] or (@active_channels[name] = @server.channels.first(:name => name, :status=>:enabled))
     end
     
     private
@@ -68,8 +81,8 @@ module TheLogger
           guy = Guy.first_or_create(:nickname => user)
           guy.save
         
-          ch = @server.channels.first_or_create(:name => channel.downcase, :status => :enabled, :server_host => @server.host)
-          ch.save!
+          ch = fetch_channel(channel)
+          return unless ch
         
           msg = Message.new(:content => text, :channel => ch, :guy => guy, :event => event)
           msg.save

@@ -35,14 +35,12 @@ module TheLogger
         # If channel
         else
           found = false
-          # Get Server object
-          result[:server] = Server.first(:host => result[:server])
           
           # Look for server
           @threads.each do |t|
-            if t[:server].host == result[:server].host
+            if t[:server] == result[:server]
               # Join the channel
-              t[:bot].irc.join result[:channel]
+              t[:bot].join result[:channel]
               found = true
               break
             end
@@ -63,7 +61,7 @@ module TheLogger
             sleep 30
             
             # Join the channel
-            @threads.last[:bot].irc.join(result[:channel])
+            @threads.last[:bot].join(result[:channel])
           end
         end
       end

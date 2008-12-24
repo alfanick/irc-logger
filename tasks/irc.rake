@@ -75,7 +75,7 @@ namespace :irc do
   end
   
   desc 'Listen for messages'
-  task :listen => [:merb_env] do
+  task :listen => [:merb_env, 'irc:clean'] do
     require 'the_logger/supervisor'
     
     config = YAML::load_file('config/bot.yml')
@@ -112,5 +112,18 @@ namespace :irc do
     
     l = TheLogger::Listener.new(config['server'], a.name)
     l.run
+  end
+  
+  desc 'Clean queues'
+  task :clean => [:merb_env] do |t, a|
+    require 'the_logger/supervisor'
+    
+    config = YAML::load_file('config/bot.yml')
+    
+    sv = TheLogger::Supervisor.new(config['server'], config['listeners'])
+    
+    Merb.logger.info "Cleaned queues..."
+    
+    sv.clean
   end
 end
