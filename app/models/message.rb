@@ -12,6 +12,7 @@ class Message
   belongs_to :guy
   belongs_to :channel
   
+  # Make search query to Sphinx
   # Thank you shanna
   def self.weight_search(search_options = {}, options = {})
     Merb::Cache[:default].fetch(Digest::SHA1.hexdigest(search_options.inspect) + "_search", :interval => Time.now.to_i / Merb::Config[:cache]["intervals"]["weight_search"]) do
@@ -23,6 +24,20 @@ class Message
       results.sort{|a, b| ids.index(a.id) <=> ids.index(b.id)}
     end
   end 
+  
+  # Calculate guys distribution within message
+  def self.guys_distribution(quality = 10)
+    max_messages = Guy.max(:messages_count)
+    results = Hash.new
+    step = max_messages/quality
+    
+    quality.times do |i|
+      range = (i*step)...((i+1)*step)
+      results[range] = Guy.count(:messages_count => range)
+    end
+    
+    results.sort { |a, b| a[0].first <=> b[0].first }
+  end
   
   def related(n, events=true)
     Merb::Cache[:default].fetch("#{self.id}_#{n}_#{events}_related", :interval => Time.now.to_i / Merb::Config[:cache]["intervals"]["related"]) do
