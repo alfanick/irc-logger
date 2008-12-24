@@ -36,6 +36,7 @@ Merb::Router.prepare do |r|
   
   match('/messages/:page').to(:controller => 'messages', :action => 'index').name(:search)
   match('/message/:id/:bcount/:count').to(:controller => 'messages', :action => 'show').name(:show_message)
+  match('/logs/:host/:channel/:year/:month/:day', :host=>/[a-z.0-9_]+/i).to(:controller => 'messages', :action => 'log', :format=>'log').name(:raw_log)
   
   
   

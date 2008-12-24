@@ -28,6 +28,15 @@ module Merb
         end
       end
     end
+    
+    def raw_message(message)
+      time = message.created_at.strftime "[%H:%M]"
+      if message.event == :message
+        "#{time} <#{message.guy.nickname}> #{message.content}\n"
+      else
+        "#{time} *** #{message.content}\n"
+      end
+    end
   
     def talk_with (message, n=5)
       Merb::Cache[:default].fetch("#{message.id}_#{n}_talk", :interval => Time.now.to_i / Merb::Config[:cache]["intervals"]["talk_with"]) do
