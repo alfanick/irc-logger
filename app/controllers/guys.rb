@@ -3,7 +3,7 @@ class Guys < Application
 
   def index(page=1)
     @guys = Guy.all(:limit => 200, :offset => 200 * (page.to_i-1))
-    raise NotFound unless not @guys.empty?
+    raise NotFound if @guys.empty?
     display @guys
   end
 

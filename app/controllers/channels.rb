@@ -1,8 +1,9 @@
 class Channels < Application
   # provides :xml, :yaml, :js
 
-  def index
-    @channels = Channel.all
+  def index(page = 1)
+    @channels = Channel.all(:limit => 50, :offset => 50 * (page.to_i-1))
+		raise NotFound if @channels.empty?
     display @channels
   end
 
@@ -18,13 +19,6 @@ class Channels < Application
     display @channel
   end
 
-  def edit(id)
-    only_provides :html
-    @channel = Channel.get(id)
-    raise NotFound unless @channel
-    display @channel
-  end
-
   def create(channel)
     @channel = Channel.new(channel)
     if @channel.save
@@ -34,25 +28,4 @@ class Channels < Application
       render :new
     end
   end
-
-  def update(id, channel)
-    @channel = Channel.get(id)
-    raise NotFound unless @channel
-    if @channel.update_attributes(channel)
-       redirect resource(@channel)
-    else
-      display @channel, :edit
-    end
-  end
-
-  def destroy(id)
-    @channel = Channel.get(id)
-    raise NotFound unless @channel
-    if @channel.destroy
-      redirect resource(:channels)
-    else
-      raise InternalServerError
-    end
-  end
-
 end # Channels

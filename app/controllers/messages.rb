@@ -17,6 +17,8 @@ class Messages < Application
   end
   
   def log(host, channel, year, month, day)
+		only_provides :log
+	
     from = Time.local(year.to_i, month.to_i, day.to_i)
     to = from + 1.day
   

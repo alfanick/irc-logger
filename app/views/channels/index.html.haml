@@ -1,16 +1,10 @@
-%h1
-  Channels controller, index action
-%p
-  Edit this file in
-  %tt
-    app/views/channels/index.html.erb
-%table
-  %tr
-  - for channel in @channels
-    %tr
-      %td
-        = link_to 'Show', url(:channel, channel)
-      %td
-        = link_to 'Edit', url(:edit_channel,  channel)
+%p.channels
+  - @channels.each do |channel|
+    %span[channel]{:style=>font_size(channel)}= link_to(channel.name, url(:show_channel, :name => channel.name))
 
-= link_to 'New', url(:new_channel)
+- if not @channels.empty?
+  #pagination
+    - if params[:page].to_i > 1
+      = link_to 'Previous page', url(:channels, :page => params[:page].to_i-1), :class => 'previous'
+    - if @channels.to_a.size >= 50
+      = link_to 'Next page', url(:channels, :page => params[:page].to_i+1), :class => 'next'
