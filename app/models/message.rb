@@ -63,7 +63,7 @@ class Message
     end
   end
   
-  before :save do
+  before :create do
     if event == :message
       guy.messages_count += 1
       guy.save!
