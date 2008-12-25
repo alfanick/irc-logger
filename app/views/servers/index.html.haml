@@ -1,16 +1,3 @@
-%h1
-  Servers controller, index action
-%p
-  Edit this file in
-  %tt
-    app/views/servers/index.html.erb
-%table
-  %tr
-  - for server in @servers
-    %tr
-      %td
-        = link_to 'Show', url(:server, server)
-      %td
-        = link_to 'Edit', url(:edit_server,  server)
-
-= link_to 'New', url(:new_server)
+%ul.servers
+  - @servers.each do |server|
+    %li= link_to server.name, url(:channels, server.host, 1)

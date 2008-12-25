@@ -91,11 +91,17 @@ body {
       font-size: 3em;
       padding: 0;
       margin: 0; }
-    #main #content p.guys {
+    #main #content ul.servers {
+      font-size: 2em;
+      list-style: none;
+      padding: 0; }
+      #main #content ul.servers li {
+        margin-left: 2em; }
+    #main #content p.guys, #main #content p.channels {
       font-size: 1.2em;
       text-align: center;
       padding: 0; }
-      #main #content p.guys span {
+      #main #content p.guys span,       #main #content p.channels span {
         display: inline;
         margin-left: 1em;
         vertical-align: middle; }

@@ -1,10 +1,8 @@
-%h1
-  Channels controller, show action
-%p
-  Edit this file in
-  %tt
-    app/views/channels/show.html.erb
+%h2.name= "#{@channel.name} on #{@channel.server_host}"
+%ul.about
+  %li= "since <em>%s</em>" % relative_date(@channel.created_at)
+  %li= "logged more than <em>%i</em> messages" % @channel.messages_count
 
-= link_to 'Edit',  url(:edit_channel,  @channel)
-|
-= link_to 'Back', url(:channels)
+%h3 Latest messages
+#results.irc
+  = talk_with(@channel.messages.first(:event => :message, :order => [:created_at.desc]), 10, true)

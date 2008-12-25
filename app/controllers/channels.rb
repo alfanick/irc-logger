@@ -1,14 +1,14 @@
 class Channels < Application
   # provides :xml, :yaml, :js
 
-  def index(page = 1)
-    @channels = Channel.all(:limit => 50, :offset => 50 * (page.to_i-1))
+  def index(server, page = 1)
+    @channels = Channel.all(:server_host => server, :limit => 50, :offset => 50 * (page.to_i-1))
 		raise NotFound if @channels.empty?
     display @channels
   end
 
-  def show(id)
-    @channel = Channel.get(id)
+  def show(server, name)
+    @channel = Channel.first(:server_host => server, :name => '#' + name)
     raise NotFound unless @channel
     display @channel
   end

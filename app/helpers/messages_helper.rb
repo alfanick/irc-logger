@@ -38,11 +38,14 @@ module Merb
       end
     end
   
-    def talk_with (message, n=5)
-      Merb::Cache[:default].fetch("#{message.id}_#{n}_talk", :interval => Time.now.to_i / Merb::Config[:cache]["intervals"]["talk_with"]) do
+    def talk_with (message, n=5, rev=false)
+      Merb::Cache[:default].fetch("#{message.id}_#{n}_#{rev}_talk", :interval => Time.now.to_i / Merb::Config[:cache]["intervals"]["talk_with"]) do
         str = '<div class="irc talk">'
-        str << "<h2>#{message.channel.name}</h2> <em class=\"server\">#{message.channel.server.name}</em> "
+				ur = link_to(message.channel.name, url(:show_channel, message.channel.server_host, message.channel.name[1..-1]))
+        sur = link_to(message.channel.server.name, url(:channels, message.channel.server_host, 1))
+				str << "<h2>#{ur}</h2> <em class=\"server\">#{sur}</em> "
         ms = message.with_surroundings(n, false)
+				ms.reverse! if rev
         str << "<em class=\"date\">#{ms.first.created_at}</em><br/>"
         str << read_more(message, false)
         str << '<ol>'
