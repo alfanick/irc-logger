@@ -67,6 +67,9 @@ class Message
     if event == :message
       guy.messages_count += 1
       guy.save!
+      
+      channel.messages_count += 1
+      channel.save!
     end
   end
   
@@ -74,6 +77,9 @@ class Message
     if event == :message
       guy.messages_count -= 1
       guy.save!
+      
+      channel.messages_count -= 1
+      channel.save!
     end
   end
 end
