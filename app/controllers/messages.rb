@@ -15,6 +15,11 @@ class Messages < Application
     raise NotFound unless @message
     display @message
   end
+
+	def more(id, limit)
+		@messages = Message.get(id.to_i).related(limit.to_i)
+		display @messages, :layout => false
+	end
   
   def log(host, channel, year, month, day)
 		only_provides :log

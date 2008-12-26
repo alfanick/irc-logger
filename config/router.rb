@@ -1,7 +1,8 @@
 Merb.logger.info("Compiling routes...")
 Merb::Router.prepare do |r|
 	match('/messages/:page').to(:controller => 'messages', :action => 'index').name(:search)
-  match('/message/:id/:bcount/:count').to(:controller => 'messages', :action => 'show').name(:show_message)
+  match('/messages/more/:id/:limit').to(:controller=>'messages', :action=>'more')
+	match('/message/:id/:bcount/:count').to(:controller => 'messages', :action => 'show').name(:show_message)
   match('/logs/:host/:channel/:year/:month/:day', :host=>/[a-z.0-9_]+/i).to(:controller => 'messages', :action => 'log', :format=>'log').name(:raw_log)
 
   match('/guys/:page').to(:controller => 'guys', :action => 'index').name(:guys)
@@ -18,4 +19,5 @@ Merb::Router.prepare do |r|
 
   match('/about').to(:controller => 'frontend', :action => 'about').name(:about)
   match('/').to(:controller => 'frontend', :action =>'index').name(:frontend)
+
 end

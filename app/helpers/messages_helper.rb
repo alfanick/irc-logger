@@ -50,7 +50,7 @@ module Merb
         str << read_more(message, false)
         str << '<ol>'
         ms.each do |msg|
-          c = msg.class.name
+          c = msg.class.name.downcase
           cid = c + "_#{msg.id}"
           if msg == message
             str << "<li class=\"result #{c}\" id=\"#{cid}\"><strong>" << format_message(msg) << "</strong></li>\n"
