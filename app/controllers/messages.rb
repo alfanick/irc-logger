@@ -17,8 +17,17 @@ class Messages < Application
   end
 
 	def more(id, limit)
-		@messages = Message.get(id.to_i).related(limit.to_i)
-		display @messages, :layout => false
+		@messages = Message.get(id.to_i).related(limit.to_i).to_a
+		
+		if limit.to_i > 0
+			date = @messages.last.created_at.to_s
+		else
+			date = @messages.first.created_at.to_s
+		end
+		
+		data = { :date => date, :content => @messages.map{ |m| "<li id='message_#{m.id}' class='message'>#{format_message(m)}</li>" }.join }
+		
+		display data, :layout => false, :format => :json
 	end
   
   def log(host, channel, year, month, day)

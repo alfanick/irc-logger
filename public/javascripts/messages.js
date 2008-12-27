@@ -27,14 +27,16 @@ var Messages = Class.create({
 		// Prevent link execution
 		Event.stop(event);
 	
+		el = event.element();
+	
 		// If first link
-		if (event.element().next()) {
+		if (el.next()) {
 			// Get first message id
-			id = event.element().adjacent('ol li.message').first().id.split(/_/)[1];
+			id = el.adjacent('ol li.message').first().id.split(/_/)[1];
 			limit =  -messages.configuration.default_limit;
 		} else { // If last link
 			// Get last message id
-			id = event.element().adjacent('ol li.message').last().id.split(/_/)[1];
+			id = el.adjacent('ol li.message').last().id.split(/_/)[1];
 			limit =  messages.configuration.default_limit;
 		}
 		
@@ -49,14 +51,18 @@ var Messages = Class.create({
 			method: 'get',
 			// When done
 			onSuccess: function(transport)
-			{
+			{	
+				response = transport.responseJSON;
+				
 				// If first link
-				if (event.element().next())
+				if (el.next())
 					// Add messages to the top
-					event.element().adjacent('ol').first().insert({ top: transport.responseText });
+					el.adjacent('ol').first().insert({ top: response.content });
 				else // If last link
 					// Add messages to the bottom
-					event.element().adjacent('ol').first().insert({ bottom: transport.responseText });
+					el.adjacent('ol').first().insert({ bottom: response.content });
+				// Update date
+				el.previous('em.date').innerHTML = response.date;
 			}
 		});
 	},
