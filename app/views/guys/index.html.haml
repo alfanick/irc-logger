@@ -1,6 +1,6 @@
-%p.guys
+%ul.guys
   - @guys.each do |guy|
-    %span[guy]{:style=>font_size(guy)}= link_to(guy.nickname, url(:show_guy, :nickname => guy.nickname))
+    %li[guy]{:style=>font_size(guy)}= link_to(guy.nickname, url(:show_guy, :nickname => guy.nickname))
 
 - if not @guys.empty?
   #pagination

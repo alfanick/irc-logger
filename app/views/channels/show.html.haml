@@ -3,14 +3,13 @@
   %li= "since <em>%s</em>" % relative_date(@channel.created_at)
   %li= "logged more than <em>%i</em> messages" % @channel.messages_count
 
+%h3 Latest messages
+#results.irc
+  = talk_with(@channel.messages.first(:event => :message, :order => [:created_at.desc]), 10, true)
+
 %h3 Archive
 %ol.archive
   - current_date = @first_date
   - while current_date <= @last_date
     %li= link_to("#{@channel.name} on #{relative_date(current_date)}", url(:raw_log, @channel.server_host, @channel.name[1..-1], current_date.year, current_date.month, current_date.day))
     - current_date += 1
-%br/
-
-%h3 Latest messages
-#results.irc
-  = talk_with(@channel.messages.first(:event => :message, :order => [:created_at.desc]), 10, true)

@@ -1,6 +1,6 @@
-%p.channels
+%ul.channels
   - @channels.each do |channel|
-    %span[channel]{:style=>font_size(channel)}= link_to(channel.name, url(:show_channel, :name => channel.name[1..-1]))
+    %li[channel]{:style=>font_size(channel)}= link_to(channel.name, url(:show_channel, :name => channel.name[1..-1]))
 
 - if not @channels.empty?
   #pagination
