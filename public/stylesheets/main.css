@@ -97,6 +97,14 @@ body {
       padding: 0; }
       #main #content ul.servers li {
         margin-left: 2em; }
+    #main #content ol.archive {
+      list-style: none;
+      padding: 0; }
+      #main #content ol.archive li {
+        float: left;
+        padding: 0;
+        padding-left: 1em;
+        padding-right: 1em; }
     #main #content p.guys, #main #content p.channels {
       font-size: 1.2em;
       text-align: center;

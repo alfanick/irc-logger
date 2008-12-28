@@ -9,7 +9,12 @@ class Channels < Application
 
   def show(server, name)
     @channel = Channel.first(:server_host => server, :name => '#' + name)
+
     raise NotFound unless @channel
+		
+		@first_date = Channel.messages.first.created_at
+		@last_date = Channel.messages.last.created_at
+		
     display @channel
   end
 
