@@ -24,7 +24,7 @@
 1. Make sure that you have installed dependencies
 2. Create database (currently supported only PostgreSQL - you can try with others on you own risk)
 3. Get the sources `git clone git://github.com/alfanick/irc-logger.git` or [download][irc-logger] the stable version
-4. Create directories `mkdir tmp var var/sphinx`
+4. Create directories `mkdir tmp var`
 5. Configure irc-logger
    * Copy `config/database.example.yml` to `config/database.yml`
      * Set there hostname, username, password, database name
@@ -37,9 +37,10 @@
      * Add listeners names
    * Add database indexing to cron `rake sphinx:delta sphinx:merge`
 6. Initialize database `rake db:automigrate`.
-7. Initialize sphinx index `rake sphinx:main`
-8. Add some channels using `rake irc:join url=server.host/#channel`
-9. Configure web server (irc-logger is Rack application)
+7. Initialize sphinx `rake sphinx:setup`
+8. Initialize sphinx index `rake sphinx:main`
+9. Add some channels using `rake irc:join url=server.host/#channel`
+10. Configure web server (irc-logger is Rack application)
 
 ### Running
 1. Run memcache server
