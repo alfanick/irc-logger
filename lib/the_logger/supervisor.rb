@@ -3,6 +3,8 @@ require 'starling'
 
 # Logging machine
 module TheLogger
+	PING_QUEUE = '__ping'
+	
   # Supervisor (task planner)
   class Supervisor
     # Create supervisor
@@ -26,14 +28,32 @@ module TheLogger
         Server.all(:status => :enabled).each do |server|
           # Go through channels
           server.channels.all(:status => :enabled).each do |channel|
+						representation = { :server => server.host, :channel => channel.name }
             # Next channel if current channel is watched
-            next if @channels.include? channel
+            next if @channels.include? representation
             # Add channel to queue
-            @starling.set(next_listener, { :server => server.host, :channel => channel.name })
+            @starling.set(next_listener, representation)
             # Mark channel as watched
-            @channels.push channel
+            @channels.push representation
           end
         end
+				
+				# Make ping request
+				@listeners.each do |listener|
+					@starling.set(listener, :ping)
+				end
+				
+				# Clear channels list
+				@channels.clear
+				
+				# Wait for listeners
+				sleep 5
+				
+				# Get logged channels
+				@starling.flush(PING_QUEUE) do |channels|
+					@channels += channels
+				end
+				
         # Next round
         sleep 300
       end
