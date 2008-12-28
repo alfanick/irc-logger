@@ -1,3 +1,8 @@
-p.incredible, p.error, p.execption {
+p.incredible {
   font-size: 2em;
   text-align: center; }
+
+p.error, p.execption, p.notice {
+  font-size: 2em;
+  text-align: center;
+  font-weight: bold; }

@@ -58,7 +58,6 @@ module TheLogger
     def fetch_guy name
       if not @active_guys.include? name
         @active_guys[name] = Guy.first_or_create(:nickname => name)
-        @active_guys[name].save
       end
       
       @active_guys[name]

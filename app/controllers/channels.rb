@@ -24,10 +24,15 @@ class Channels < Application
     display @channel
   end
 
-  def create(channel)
-    @channel = Channel.new(channel)
+  def create
+		server = Server.first_or_create(:host => params['server'].split(':')[0], :port => (params['server'].split(':')[1] or 6667), :status => :enabled)
+		
+		data = { :name => params['name'], :server => server }
+	
+    @channel = Channel.new(data)
+
     if @channel.save
-      redirect resource(@channel), :message => {:notice => "Channel was successfully created"}
+      redirect url(:frontend), :message => {:notice => "Channel was successfully created"}
     else
       message[:error] = "Channel failed to be created"
       render :new

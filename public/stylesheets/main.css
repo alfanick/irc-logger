@@ -1,6 +1,11 @@
-p.incredible, p.error, p.execption {
+p.incredible {
   font-size: 2em;
   text-align: center; }
+
+p.error, p.execption, p.notice {
+  font-size: 2em;
+  text-align: center;
+  font-weight: bold; }
 
 ul.menu, ol.menu {
   margin: 0;
@@ -103,6 +108,18 @@ body {
       #main #content ol.archive li {
         display: inline;
         margin-left: 2em; }
+    #main #content form.join {
+      font-size: 1.4em; }
+      #main #content form.join p {
+        margin-bottom: 1em;
+        text-align: center; }
+        #main #content form.join p label {
+          display: block;
+          font-weight: bold;
+          text-align: left;
+          margin-left: 2em; }
+        #main #content form.join p input {
+          font-size: 1.4em; }
     #main #content ul.guys, #main #content ul.channels {
       font-size: 1.2em;
       text-align: center;

@@ -1,13 +1,9 @@
-%h1 Channels controller, new action
-
-%p 
-  Edit this file in 
-  %tt app/views/channels/new.html.erb
-
 = error_messages_for :channel
 
-= form_for(@channel, :action => url(:channels) ) do
+= form_for(@channel, :action => url(:create_channel), :class => 'join') do
   %p
-    = submit "Create"
-
-= link_to 'Back', url(:channels)
+    = text_field :name => 'server', :label => 'Server host'
+  %p
+    = text_field :name => 'name', :label => 'Channel name'
+  %p
+    = submit "Join"

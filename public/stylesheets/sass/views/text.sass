@@ -1,9 +1,15 @@
 =large_text
   :font-size 2em
 
-p.incredible, p.error, p.execption
+p.incredible
   +large_text
   :text-align center
+
+p.error, p.execption, p.notice
+  +large_text
+  :text-align center
+  
+  :font-weight bold
 
 =code_view
   :font-family "Liberation Mono", "Dejavu Sans Mono", "Monaco", "Consolas", "Courier New", monospace
