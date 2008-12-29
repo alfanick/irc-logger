@@ -1,15 +1,20 @@
 namespace :sphinx do
   desc 'Create main messages index (slowly)'
-  task :main do
+  task :main => ['sphinx:clear_cache'] do
     begin
       sh 'indexer --config config/sphinx.conf messages'
     rescue Exception
       sh 'indexer --config config/sphinx.conf messages --rotate'    
     end
   end
+
+	desc 'Clear action cache'
+	task :clear_cache do
+		sh "rm -R #{Merb.root / :tmp / :actions}"
+	end
   
   desc 'Create delta messages index (fast - only new messages are indexed)'
-  task :delta do
+  task :delta => ['sphinx:clear_cache'] do
     begin
       sh 'indexer --config config/sphinx.conf delta'
     rescue Exception
@@ -73,7 +78,5 @@ namespace :sphinx do
   end
   
   desc 'Restart listener'
-  task :restart => [:stop, :listen] do
-  
-  end
+  task :restart => [:stop, :listen] { }
 end
