@@ -1,6 +1,11 @@
 class Channels < Application
   # provides :xml, :yaml, :js
 
+	cache :index, :show, :new
+	
+	eager_cache :new, :index
+	eager_cache :new, :show
+
   def index(server, page = 1)
     @channels = Channel.all(:server_host => server, :limit => 50, :offset => 50 * (page.to_i-1))
 		raise NotFound if @channels.empty?
