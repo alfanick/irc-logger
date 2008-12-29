@@ -1,6 +1,4 @@
 class Messages < Application
-  provides :log
-
 	cache :log, :index, :more
 
   def index(query, page = 1)
