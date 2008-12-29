@@ -7,4 +7,4 @@
 %h3 Latest messages
 #results.irc
   - @guy.messages.all(:event => :message, :limit => 5, :order => [:created_at.desc]).each do |message|
-    = talk_with(message, 1)
+    = partial 'messages/talk', :message => message, :n => 1, :reversed => false

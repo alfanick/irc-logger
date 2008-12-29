@@ -2,5 +2,4 @@
 #results.irc
   - c = params['count'].to_i
   - b = params['bcount'].to_i
-  = talk_with(@message, -b..c)
-
+  = partial 'messages/talk', :message => @message, :n => -b..c, :reversed => false

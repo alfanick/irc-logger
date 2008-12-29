@@ -1,7 +1,7 @@
 #results.irc
   - if not @messages.empty?
     - for message in @messages
-      = talk_with(message, 3)
+      = partial 'messages/talk', :message => message, :n => 3, :reversed => false
   - else
     - if params.include? :page and params[:page].to_i > 1
       %p.result.error= "No more search results... Back to %s." % link_to('previous page', url(:search, :query => params[:query], :page => params[:page].to_i-1))

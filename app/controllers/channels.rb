@@ -12,8 +12,8 @@ class Channels < Application
 
     raise NotFound unless @channel
 		
-		@first_date = Channel.messages.first.created_at
-		@last_date = Channel.messages.last.created_at
+		@first_date = Message.first(:channel_id => @channel.id).created_at
+		@last_date = Message.first(:channel_id => @channel.id, :order => [:created_at.desc]).created_at
 		
     display @channel
   end

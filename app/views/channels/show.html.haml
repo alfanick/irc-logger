@@ -5,7 +5,7 @@
 
 %h3 Latest messages
 #results.irc
-  = talk_with(@channel.messages.first(:event => :message, :order => [:created_at.desc]), 10, true)
+  = partial 'messages/talk', :message => @channel.messages.first(:event => :message, :order => [:created_at.desc]), :n => 10, :reversed => true
 
 %h3 Archive
 %ol.archive

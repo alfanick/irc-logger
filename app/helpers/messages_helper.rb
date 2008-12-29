@@ -37,35 +37,6 @@ module Merb
         "#{time} *** #{message.content}\n"
       end
     end
-  
-    def talk_with (message, n=5, rev=false)
-      Merb::Cache[:default].fetch("#{message.id}_#{n}_#{rev}_talk", :interval => Time.now.to_i / Merb::Config[:cache]["intervals"]["talk_with"]) do
-        str = '<div class="irc talk">'
-				ur = link_to(message.channel.name, url(:show_channel, message.channel.server_host, message.channel.name[1..-1]))
-        sur = link_to(message.channel.server.name, url(:channels, message.channel.server_host, 1))
-				str << "<h2>#{ur}</h2> <em class=\"server\">#{sur}</em> "
-        ms = message.with_surroundings(n, false)
-				ms.reverse! if rev
-        str << "<em class=\"date\">#{ms.first.created_at}</em><br/>"
-        str << read_more(message, false)
-        str << '<ol>'
-        ms.each do |msg|
-          c = msg.class.name.downcase
-          cid = c + "_#{msg.id}"
-          if msg == message
-            str << "<li class=\"result #{c}\" id=\"#{cid}\"><strong>" << format_message(msg) << "</strong></li>\n"
-          else
-            str << "<li class=\"#{c}\" id=\"#{cid}\">" << format_message(msg) << "</li>\n"
-          end
-        end
-        str << '</ol>'
-        str << "<em class=\"date\">#{ms.last.created_at}</em><br/>"
-        str << read_more(message)
-        str << "</div>\n"
-        
-        str
-      end
-    end
     
     def read_more (message, down=true)
       b = 10

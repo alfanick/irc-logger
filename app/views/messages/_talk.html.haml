@@ -1,0 +1,24 @@
+.irc.talk
+  %h2= link_to(message.channel.name, url(:show_channel, message.channel.server_host, message.channel.name[1..-1]))
+  %em.server= link_to(message.channel.server.name, url(:channels, message.channel.server_host, 1))
+  
+  - surroundings = message.with_surroundings(n, false)
+  - surroundings.reverse! if reversed
+  
+  %em.date= surroundings.first.created_at
+  %br/
+  
+  = read_more(message, false)
+  
+  %ol
+    - surroundings.each do |msg|
+      - if msg == message
+        %li[msg]{ :class => :result }
+          %strong= format_message msg
+      - else
+        %li[msg]= format_message msg
+  
+  %em.date= surroundings.last.created_at
+  %br/
+  
+  = read_more(message, true)
