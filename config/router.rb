@@ -17,9 +17,8 @@ Merb::Router.prepare do |r|
 
   slice(:merb_auth_slice_password, :name_prefix => nil, :path_prefix => "")
 
-  default_routes
-
   match('/about').to(:controller => 'frontend', :action => 'about').name(:about)
   match('/').to(:controller => 'frontend', :action =>'index').name(:frontend)
 
+  default_routes
 end
