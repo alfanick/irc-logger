@@ -78,5 +78,6 @@ namespace :sphinx do
   end
   
   desc 'Restart listener'
-  task :restart => [:stop, :listen] { }
+  task :restart => [:stop, :listen] do
+	end
 end
