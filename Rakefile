@@ -33,6 +33,10 @@ namespace :app do
   task :restart do
     sh 'touch tmp/restart.txt'
   end
+
+	task :doc do
+		sh 'rdoc -aUSN -w 2 -W http://github.com/alfanick/irc-logger/tree/master/%s --op doc/all --charset utf-8 --exclude autotest --exclude doc --exclude merb --exclude var --exclude log --exclude tmp -w 2 --title irc-logger'
+	end
 end
 
 ##############################################################################

@@ -1,3 +1,4 @@
+# Exceptions (errors) methods
 class Exceptions < Merb::Controller
   
   # handle NotFound exceptions (404)

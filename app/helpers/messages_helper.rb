@@ -1,6 +1,16 @@
 module Merb
-  module MessagesHelper
-    # Format Message to HTML
+  # Messages cloud
+	module MessagesHelper
+    # Format message to HTML. Encode tags, 
+		# make links clickable, parse strong and 
+		# emphasis, create links to guys.
+		#
+		# *Cached*
+		#
+		# *Parameters*
+		# - +message+ - Message - message
+		#
+		# *Return* - String - HTML code
     def format_message (message)  
       Merb::Cache[:default].fetch(message.id.to_s + "_format", :interval => Time.now.to_i / Merb::Config[:cache]["intervals"]["format_message"]) do
         if message.event == :message
@@ -29,6 +39,12 @@ module Merb
       end
     end
     
+		# Create raw log entry
+		#
+		# *Parameters*
+		# - +message+ - Message - message
+		#
+		# *Return* - String - log entry
     def raw_message(message)
       time = message.created_at.strftime "[%H:%M]"
       if message.event == :message
@@ -38,6 +54,13 @@ module Merb
       end
     end
     
+		# Create "read more" link for message.
+		#
+		# *Parameters*
+		# - +message+ - Message - message
+		# - +down+ - Boolean - link down the time?
+		#
+		# *Return* - String - HTML code
     def read_more (message, down=true)
       b = 10
       c = 20

@@ -1,8 +1,10 @@
+# Servers controller. List logged servers.
 class Servers < Application
-  # provides :xml, :yaml, :js
-
 	cache :index
 
+	# List logged servers.
+	#
+	# *Cached*
   def index
     @servers = Server.all
     display @servers

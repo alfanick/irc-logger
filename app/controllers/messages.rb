@@ -1,6 +1,17 @@
+# Messages controller. The most important controller.
+# Display messages, search them, return logs and serve
+# AJAX data.
 class Messages < Application
-	cache :log, :index, :more
+	cache :log, :index, :more, :show
 
+	# Search messages. Results are the best matches
+	# with context (IRC talk).
+	#
+	# *Cached*
+	#
+	# *Parameters*
+	# - +query+ - String - search query (see Sphinx extended syntax)
+	# - +page+ - Integer - page number
   def index(query, page = 1)
     if params.include? 'query' and not params['query'].empty?
       @messages = Message.weight_search(:conditions => [params['query']], :limit => 10, :offset => 10 * (page.to_i-1))
@@ -10,12 +21,31 @@ class Messages < Application
     display @messages
   end
 
-  def show(id)
+	# Display message with context. It's AJAXable.
+	#
+	# *Cached*
+	#
+	# *Raise* - NotFound
+	#
+	# *Parameters*
+	# - +id+ - Integer - message id
+	# - +bcount+ - Integer - count of messages before result
+	# - +count+ - Integer - count of messages after result
+  def show(id, bcount, count)
     @message = Message.get(id)
     raise NotFound unless @message
     display @message
   end
 
+	# Handle AJAX more request.
+	#
+	# *Cached*
+	#
+	# *Format* - +:json+
+	#
+	# *Parameters*
+	# - +id+ - Integer - message id
+	# - +limit+ - Integer - messages limit (could be less than zero)
 	def more(id, limit)
 		@messages = Message.get(id.to_i).related(limit.to_i).to_a
 		
@@ -30,6 +60,20 @@ class Messages < Application
 		display data, :layout => false, :format => :json
 	end
   
+	# Generate classic text IRC log.
+	#
+	# *Cached*
+	#
+	# *Raise* - NotFound
+	#
+	# *Format* - +:log+
+	#
+	# *Parameters*
+	# - +host+ - String - server hostname
+	# - +channel+ - String - channel name
+	# - +year+ - Integer - year
+	# - +month+ - Integer - month
+	# - +day+ - Integer - day
   def log(host, channel, year, month, day)
 		only_provides :log
 	
