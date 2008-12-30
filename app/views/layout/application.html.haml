@@ -28,9 +28,9 @@
 
       #footer
         %ul.menu.horizontal
-          %li= link_to 'Add channel', url(:join_channel)
-          %li= link_to 'Servers', url(:servers)
-          %li= link_to 'People', url(:guys, 1)
-          %li.current= link_to 'About', url(:about)
+          %li{:class => ('current' if (params[:controller] == 'channels') and params[:action] == 'new')}= link_to 'Add channel', url(:join_channel)
+          %li{:class => ('current' if (params[:controller] == 'servers') and params[:action] == 'index')}= link_to 'Servers', url(:servers)
+          %li{:class => ('current' if (params[:controller] == 'guys') and params[:action] == 'index')}= link_to 'People', url(:guys, 1)
+          %li{:class => ('current' if (params[:controller] == 'frontend') and params[:action] == 'about')}= link_to 'About', url(:about)
           %li= link_to 'Donate', 'http://pledgie.org/campaigns/2048'
           %li= link_to 'Source code', 'http://github.com/alfanick/irc-logger/'
