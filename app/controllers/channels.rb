@@ -3,8 +3,8 @@ class Channels < Application
 
 	cache :index, :show, :new
 	
-	eager_cache :new, :index
-	eager_cache :new, :show
+	eager_cache :create, :index
+	eager_cache :create, :show
 
   def index(server, page = 1)
     @channels = Channel.all(:server_host => server, :limit => 50, :offset => 50 * (page.to_i-1))
