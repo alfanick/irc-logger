@@ -1,5 +1,18 @@
 require 'digest/sha1'
 
+# Message model - represents IRC message
+#
+# *Searchable and indexed* with Sphinx
+#
+# *Properties*
+# - +id+ - Serial - unique identificator
+# - +content+ - Text - message content
+# - +event+ - Symbol - message type (:message, :join, :mode, :part, :kick)
+# - +created_at+ - DateTime - creating time
+#
+# *Relations*
+# - belongs_to +guy+
+# - belongs_to +channel+
 class Message
   include DataMapper::SphinxResource
   
@@ -12,7 +25,7 @@ class Message
   belongs_to :guy
   belongs_to :channel
   
-  # Make search query to Sphinx
+  # Make search query to Sphinx.
   # Thank you shanna
   def self.weight_search(search_options = {}, options = {})
     Merb::Cache[:default].fetch(Digest::SHA1.hexdigest(search_options.inspect) + "_search", :interval => Time.now.to_i / Merb::Config[:cache]["intervals"]["weight_search"]) do
@@ -25,7 +38,12 @@ class Message
     end
   end 
   
-  # Calculate guys distribution within message
+  # Calculate guys distribution within message.
+	#
+	# *Parameters*
+	# - +quality+ - Integer
+	#
+	# *Return* - Array
   def self.guys_distribution(quality = 10)
     max_messages = Guy.max(:messages_count)
     results = Hash.new
@@ -39,6 +57,13 @@ class Message
     results.sort { |a, b| a[0].first <=> b[0].first }
   end
   
+	# Return related messages with message.
+	#
+	# *Cached*
+	#
+	# *Parameters*
+	# - +n+ - Integer - count of related messages (could be less than zero)
+	# - +events+ - Boolean - should events (other than :message) added to results?
   def related(n, events=true)
     Merb::Cache[:default].fetch("#{self.id}_#{n}_#{events}_related", :interval => Time.now.to_i / Merb::Config[:cache]["intervals"]["related"]) do
       if events
@@ -55,6 +80,11 @@ class Message
     end
   end
   
+	# Return message with surroundings
+	#
+	# *Parameters*
+	# - +n+ - Integer/Range - count (range) of related messages
+	# - +events+ - Boolean - should events (other than :message) added to results?
   def with_surroundings(n=5, events=true)
     if n.class == Range
       related(n.first, events) + [self] + related(n.last, events)

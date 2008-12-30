@@ -1,3 +1,13 @@
+# Server model - represents IRC server
+#
+# *Properties*
+# - +host+ - String - unique server host
+# - +name+ - String - server name
+# - +port+ - Integer - server port
+# - +status+ - Symbol - server status (:enabled, :inactive, :disabled)
+#
+# *Relations*
+# - has n, +channels+
 class Server
   include DataMapper::Resource
   

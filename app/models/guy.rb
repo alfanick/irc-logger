@@ -1,3 +1,12 @@
+# Guy model - represents IRC user (called "guy").
+#
+# *Properties*
+# - +nickname+ - String - unique key to identity guy
+# - +created_at+ - DateTime - creating time
+# - +messages_count+ - Integer - count of guy writed messages
+#
+# *Relations*
+# - has n, +messages+
 class Guy
   include DataMapper::Resource
   
