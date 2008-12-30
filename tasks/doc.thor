@@ -41,7 +41,7 @@ module Merb
     
     def find_library(directory_snippet)
       gem_dir = nil
-      Gem.path.find do |path|
+      ::Gem.path.find do |path|
         dir = Dir.glob("#{path}/gems/#{directory_snippet}*") 
         dir.empty? ? false : gem_dir = dir.last
       end
