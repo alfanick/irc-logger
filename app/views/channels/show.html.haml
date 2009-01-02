@@ -1,3 +1,5 @@
+- @title = "#{@channel.name} on #{@channel.server_host}"
+
 %h2.name= "#{@channel.name} on #{@channel.server_host}"
 %ul.about
   %li= "since <em>%s</em>" % relative_date(@channel.created_at)

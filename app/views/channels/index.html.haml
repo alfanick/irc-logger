@@ -1,3 +1,5 @@
+- @title = "Channels on #{@channels.first.server_host}"
+
 %ul.channels
   - @channels.each do |channel|
     %li[channel]{:style=>font_size(channel)}= link_to(channel.name, url(:show_channel, :name => channel.name[1..-1]))

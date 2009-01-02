@@ -2,7 +2,10 @@
 !!! 1.1
 %html{ html_attrs }
   %head
-    %title IRC logger
+    - if not @title.empty?
+      %title= h("#{@title} - IRC logger")
+    -else
+      %title IRC logger
     %meta{ 'http-equiv' => 'Content-Type', :content => 'application/xhtml+xml; charset=utf-8'}
     - require_css 'main', 'styles/terminal'
     - require_js 'prototype', 'application'

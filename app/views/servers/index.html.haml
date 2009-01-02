@@ -1,3 +1,5 @@
+- @title = "Servers"
+
 %ul.servers
   - @servers.each do |server|
     %li= link_to server.name, url(:channels, server.host, 1)
