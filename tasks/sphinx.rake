@@ -14,7 +14,7 @@ namespace :sphinx do
 	end
   
   desc 'Create delta messages index (fast - only new messages are indexed)'
-  task :delta => ['sphinx:clear_cache'] do
+  task :delta do
     begin
       sh 'indexer --config config/sphinx.conf delta'
     rescue Exception
@@ -23,7 +23,7 @@ namespace :sphinx do
   end
   
   desc 'Merge delta and main indexes'
-  task :merge do
+  task :merge => ['sphinx:clear_cache'] do
     sh 'indexer --config config/sphinx.conf --merge messages delta --rotate'
   end
   
