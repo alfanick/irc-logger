@@ -10,7 +10,10 @@ namespace :sphinx do
 
 	desc 'Clear action cache'
 	task :clear_cache do
-		sh "rm -R #{Merb.root / :tmp / :actions}"
+	  begin
+		  sh "rm -R #{Merb.root / :tmp / :actions}"
+		rescue Exception
+	  end
 	end
   
   desc 'Create delta messages index (fast - only new messages are indexed)'
