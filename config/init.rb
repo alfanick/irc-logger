@@ -23,12 +23,15 @@ end
 Merb::BootLoader.before_app_loads do
   DataMapper.setup(:search, 'sphinx://localhost/./config/sphinx.conf')
   Merb::Cache.setup do
+    if not exists? :default
+    
     register(:memory_store, Merb::Cache::MemcachedStore, :namespace => "irc-logger", :servers => Merb::Config[:cache]["servers"]) if not exists?(:memory_store)
     register(:action_dir, Merb::Cache::FileStore, :dir => Merb.root / :tmp / :actions)
 
 		register(:action_store, Merb::Cache::ActionStore[:action_dir])
 
-		register(:default, Merb::Cache::AdhocStore[:action_store, :memory_store]) if not exists?(:default)
+	 register(:default, Merb::Cache::AdhocStore[:action_store, :memory_store]) if not exists?(:default)
+	end
   end
   Merb.add_mime_type(:log, :to_s, %w[text/plain]) 
 end
