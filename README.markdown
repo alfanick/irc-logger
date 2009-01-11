@@ -32,9 +32,11 @@
      * Set there hostname, username, password, database name
    * Set memcache servers in `config/cache.yml`
      * If you want you can change caching times (in seconds)
-   * Configure bot listeners
+   * Configure bot listeners (copy `config/bot.example.yml` to `config/bot.yml`(
      * Set starling server
-     * Add listeners names
+     * Add listeners names, nicknames, passwords and emails
+       * Irc-logger will register nickname
+       * Remember to pass valid and unique email, because some servers like to check this
    * Add database indexing to cron `rake sphinx:delta sphinx:merge`
 6. Initialize database `rake db:automigrate`.
 7. Initialize sphinx `rake sphinx:setup`
