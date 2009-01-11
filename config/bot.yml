@@ -1,4 +1,7 @@
 ---
 server: 127.0.0.1:22122
 listeners:
-  - workstation_0
+  workstation_0:
+    nickname: il_wrk_0
+    password: LubieDzem!
+    email: il_wrk_0@bot.irc-logger.dev.pyg.pl

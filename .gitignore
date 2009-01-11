@@ -5,6 +5,7 @@ tmp/*
 var/sphinx/*
 config/database.yml
 config/sphinx.conf
+config/bot.yml
 TAGS
 *~
 .#*

@@ -13,17 +13,20 @@ module TheLogger
     # *Arguments*:
     # - +server+ - String
     # - +name+ - String
-    def initialize(server, name)
+    # - +credentials+ - Hash - login credentials
+    def initialize(server, name, credentials)
       @server = Server.first(:host => server)
+      @credentials = credentials
+      
       @active_channels = { }
       @active_guys = { }
     
       options = {
         :irc_network => @server.host,
         :port => @server.port,
-        :username => "the_logger_#{name}",
+        :username => @credentials['nickname'],
         :realname => 'IRC logging bot',
-        :nicknames => ["the_logger_#{name}"],
+        :nicknames => [@credentials['nickname']],
         :silent => true
       }
       
@@ -31,6 +34,7 @@ module TheLogger
       
       self.connect_socket
       self.start_listening
+      self.identify
     end
     
     # Prepare events for listening
@@ -61,6 +65,14 @@ module TheLogger
       end
       
       @active_guys[name]
+    end
+      
+    # Logs in
+    def identify
+      # Try register nickname
+      msg "NickServ", "register #{@credentials['password']} #{@credentials['email']}"
+      # And indetify
+      msg "NickServ", "identify #{@credentials['password']}"
     end
     
     private

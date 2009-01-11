@@ -1,0 +1,7 @@
+---
+server: 127.0.0.1:22122
+listeners:
+  workstation_0:
+    nickname: foobar293
+    password: foobar
+    email: foo@bar.pl

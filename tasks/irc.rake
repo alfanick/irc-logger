@@ -80,7 +80,7 @@ namespace :irc do
     
     config = YAML::load_file('config/bot.yml')
     
-    sv = TheLogger::Supervisor.new(config['server'], config['listeners'])
+    sv = TheLogger::Supervisor.new(config['server'], config['listeners'].keys)
     
     Merb.logger.info "Listening for messages..."
     
@@ -93,7 +93,7 @@ namespace :irc do
     
     config = YAML::load_file('config/bot.yml')
     
-    sv = TheLogger::Supervisor.new(config['server'], config['listeners'])
+    sv = TheLogger::Supervisor.new(config['server'], config['listeners'].keys)
     
     Merb.logger.info "Stopped listening..."
     
@@ -108,9 +108,11 @@ namespace :irc do
     
     config = YAML::load_file('config/bot.yml')
     
+    raise "Listener '#{a.name}' is not defined (see config/bot.yml)" unless config['listeners'][a.name]
+    
     Merb.logger.info "Created listener..."
     
-    l = TheLogger::Listener.new(config['server'], a.name)
+    l = TheLogger::Listener.new(config['server'], a.name, config['listeners'][a.name])
     l.run
   end
   
@@ -120,7 +122,7 @@ namespace :irc do
     
     config = YAML::load_file('config/bot.yml')
     
-    sv = TheLogger::Supervisor.new(config['server'], config['listeners'])
+    sv = TheLogger::Supervisor.new(config['server'], config['listeners'].keys)
     
     Merb.logger.info "Cleaned queues..."
     

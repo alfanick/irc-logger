@@ -12,9 +12,11 @@ module TheLogger
     # Params
     # - +server+ - String - server and port to starling
     # - +name+ - String - listener name (must be unique!)
-    def initialize(server, name)
+    # - +options+ - Hash - options (login credentials)
+    def initialize(server, name, options)
       @server = name
       @name = name
+      @options = options
       
       @threads = []
 			@channels = []
@@ -59,10 +61,10 @@ module TheLogger
 						# If new server
 						if not found
 							# Create thread
-							@threads.push (Thread.new(@name, result) do |n, r|
+							@threads.push (Thread.new(@name, result, @options) do |n, r, o|
 								Thread.current[:server] = r[:server]
 								# Create Bot
-								Thread.current[:bot] = Bot.new(r[:server], n)
+								Thread.current[:bot] = Bot.new(r[:server], n, o)
 								# Start listening
 								Thread.current[:bot].irc_loop
 							end)
