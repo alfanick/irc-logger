@@ -17,7 +17,6 @@ module TheLogger
     def initialize(server, name, credentials)
       @server = Server.first(:host => server)
       @credentials = credentials
-      
       @active_channels = { }
       @active_guys = { }
     
@@ -83,7 +82,7 @@ module TheLogger
       #
       # *Return* - String
       def repair_channel(channel)
-        channel.gsub /^#+/, '#'
+        channel.downcase.gsub /^#+/, '#'
       end
     
       # Add message to database

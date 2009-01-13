@@ -22,4 +22,8 @@ class Channel
   
   belongs_to :server
   has n, :messages
+  
+  before :create do
+    name = name.downcase
+  end
 end
