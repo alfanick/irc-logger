@@ -88,7 +88,7 @@ namespace :irc do
   end
   
   desc 'Stop listening'
-  task :stop => [:merb_env] do
+  task :stop => [:merb_env, 'irc:clean'] do
     require 'the_logger/supervisor'
     
     config = YAML::load_file('config/bot.yml')
