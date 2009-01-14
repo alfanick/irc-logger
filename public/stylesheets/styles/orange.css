@@ -27,6 +27,10 @@ body {
     #main #content #results .irc.talk {
       background-color: #ffece3;
       border-bottom-color: #ff9e2d; }
+      #main #content #results .irc.talk ol li.odd {
+        color: #060010; }
+      #main #content #results .irc.talk ol li.even {
+        color: #060010; }
     #main #content #pagination a {
       text-decoration: none; }
       #main #content #pagination a:hover {

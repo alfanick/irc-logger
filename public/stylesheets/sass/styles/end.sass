@@ -38,6 +38,14 @@ body
         :background-color = !result_bg
         
         :border-bottom-color = !talk_dv_fg
+      
+        ol
+          li
+            &.odd
+              :color = !result_odd_fg
+          
+            &.even
+              :color = !result_even_fg
     
     #pagination
       a

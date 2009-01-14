@@ -11,12 +11,15 @@
   = read_more(message, false)
   
   %ol
+    - i = 0
     - surroundings.each do |msg|
+      - cl = (i % 2 == 0) ? 'even' : 'odd'
       - if msg == message
-        %li[msg]{ :class => :result }
+        %li[msg]{ :class => "result #{cl}" }
           %strong= format_message msg
       - else
-        %li[msg]= format_message msg
+        %li[msg]{ :class => cl }= format_message msg
+      - i += 1
   
   %em.date= surroundings.last.created_at
   %br/
