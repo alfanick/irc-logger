@@ -62,7 +62,7 @@ var Messages = Class.create({
 					// Add messages to the bottom
 					el.adjacent('ol').first().insert({ bottom: response.content });
 				// Update date
-				el.previous('em.date').innerHTML = response.date;
+				el.previous('em.date').update(response.date);
 			}
 		});
 	},
