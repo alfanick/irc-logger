@@ -24,6 +24,6 @@ class Channel
   has n, :messages
   
   before :create do
-    name = name.downcase
+    name = self.name.downcase
   end
 end
