@@ -1,7 +1,7 @@
 Merb.logger.info("Compiling routes...")
 Merb::Router.prepare do |r|
 	match('/messages/:page').to(:controller => 'messages', :action => 'index').name(:search)
-  match('/messages/more/:id/:limit').to(:controller=>'messages', :action=>'more')
+  match('/messages/more/:id(/:limit)').to(:controller=>'messages', :action=>'more')
 	match('/message/:id/:bcount/:count').to(:controller => 'messages', :action => 'show').name(:show_message)
   match('/logs/:host/:channel/:year/:month/:day', :host=>/[a-z.0-9_]+/i).to(:controller => 'messages', :action => 'log', :format=>'log').name(:raw_log)
 

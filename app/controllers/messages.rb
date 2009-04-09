@@ -46,7 +46,9 @@ class Messages < Application
 	# *Parameters*
 	# - +id+ - Integer - message id
 	# - +limit+ - Integer - messages limit (could be less than zero)
-	def more(id, limit)
+	def more(id, limit = 5)
+	  only_provides :json
+	
 		@messages = Message.get(id.to_i).related(limit.to_i).to_a
 		
 		if limit.to_i > 0
@@ -57,7 +59,7 @@ class Messages < Application
 		
 		data = { :date => date, :content => @messages.map{ |m| "<li id='message_#{m.id}' class='message'>#{format_message(m)}</li>" }.join }
 		
-		display data, :layout => false, :format => :json
+		render data.to_json, :format => :json
 	end
   
 	# Generate classic text IRC log.
