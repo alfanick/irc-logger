@@ -7,7 +7,7 @@
     -else
       %title IRC logger
     %meta{ 'http-equiv' => 'Content-Type', :content => 'application/xhtml+xml; charset=utf-8'}
-    - require_css 'main', 'styles/terminal'
+    - require_css 'main', 'styles/green'
     - require_js 'prototype', 'application'
     
     = include_required_css
@@ -26,6 +26,10 @@
       #content
         - if message[:notice]
           %p.notice= message[:notice]
+        - if message[:warning]
+          %p.notice= message[:warning]
+        - if message[:error]
+          %p.notice= message[:error]
         
         = catch_content :for_layout
 

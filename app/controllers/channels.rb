@@ -59,13 +59,22 @@ class Channels < Application
 		
 		data = { :name => params['name'], :server => server }
 	
-    @channel = Channel.new(data)
-
-    if @channel.save
-      redirect url(:frontend), :message => {:notice => "Channel was successfully created"}
-    else
-      message[:error] = "Channel failed to be created"
+	  ch = Channel.first(:name => data[:name], :server_host => data[:server].host)
+	  
+	  if ch
+      message[:error] = "Already exists"
       render :new
+    else
+	
+      @channel = Channel.new(data)
+
+      if @channel.save
+        redirect url(:frontend), :message => {:notice => "Channel was successfully created"}
+      else
+        message[:error] = "Channel failed to be created"
+        render :new
+      end
+    
     end
   end
 end # Channels
