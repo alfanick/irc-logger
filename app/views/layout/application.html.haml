@@ -23,14 +23,7 @@
         %input{:type=>'hidden', :name=>'page', :value=>'1'}
         %input.submit{:type=>'submit', :value=>'Search'}
     
-      #content
-        - if message[:notice]
-          %p.notice= message[:notice]
-        - if message[:warning]
-          %p.notice= message[:warning]
-        - if message[:error]
-          %p.notice= message[:error]
-        
+      #content        
         = catch_content :for_layout
 
       #footer
