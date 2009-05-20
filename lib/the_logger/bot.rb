@@ -31,6 +31,8 @@ module TheLogger
       
       super(options)
       
+      puts options.inspect
+      
       self.connect_socket
       self.start_listening
       self.identify

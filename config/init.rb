@@ -30,8 +30,8 @@ Merb::BootLoader.before_app_loads do
 
 		register(:action_store, Merb::Cache::ActionStore[:action_dir])
 
-	 register(:default, Merb::Cache::AdhocStore[:action_store, :memory_store]) if not exists?(:default)
-	end
+	  register(:default, Merb::Cache::AdhocStore[:action_store, :memory_store])
+	  end
   end
   Merb.add_mime_type(:log, :to_s, %w[text/plain]) 
 end
